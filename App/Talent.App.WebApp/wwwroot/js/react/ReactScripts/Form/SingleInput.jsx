@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import PropTypes from 'prop-types';
+import { TextArea } from 'semantic-ui-react'
 
 export const SingleInput = (props) =>
     <div className={`field ${props.isError == true ? 'error' : ''} `}>
@@ -35,12 +36,26 @@ export class ChildSingleInput extends React.Component {
     };
 
     render() {
-
+        if (this.props.minLength <= 100 || this.props.minLength==null) {
+            return (
+                <div className="field">
+                    <label>{this.props.label}</label>
+                    <input
+                        type={this.props.inputType}
+                        name={this.props.name}
+                        value={this.props.value}
+                        placeholder={this.props.placeholder}
+                        maxLength={this.props.maxLength}
+                        onChange={this.props.controlFunc}
+                    />
+                    {this.props.isError ? <div className="ui basic red pointing prompt label transition visible">{this.props.errorMessage}</div> : null}
+                </div>
+            )
+        }
         return (
             <div className="field">
                 <label>{this.props.label}</label>
-                <input
-                    type={this.props.inputType}
+                <TextArea
                     name={this.props.name}
                     value={this.props.value}
                     placeholder={this.props.placeholder}
@@ -51,6 +66,7 @@ export class ChildSingleInput extends React.Component {
             </div>
         )
 
+
     }
 }
 
@@ -58,10 +74,10 @@ export class ChildSingleInput extends React.Component {
 ChildSingleInput.propTypes = {
     inputType: PropTypes.oneOf(['text', 'number', 'password']).isRequired,
     name: PropTypes.string.isRequired,
-    value: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-    ]),
+    //value: PropTypes.oneOfType([
+    //    PropTypes.string,
+    //    PropTypes.number,
+    //]),
     placeholder: PropTypes.string,
     controlFunc: PropTypes.func.isRequired,
     //isError: PropTypes.bool.isRequired,
