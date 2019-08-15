@@ -76,6 +76,7 @@ export default class AccountProfile extends React.Component {
             },
             type: "GET",
             success: function (res) {
+                console.log(res.data)
                 this.updateWithoutSave(res.data)
             }.bind(this)
         })

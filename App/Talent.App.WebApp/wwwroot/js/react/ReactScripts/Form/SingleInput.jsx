@@ -60,8 +60,8 @@ ChildSingleInput.propTypes = {
     name: PropTypes.string.isRequired,
     value: PropTypes.oneOfType([
         PropTypes.string,
-        PropTypes.number
-    ]).isRequired,
+        PropTypes.number,
+    ]),
     placeholder: PropTypes.string,
     controlFunc: PropTypes.func.isRequired,
     //isError: PropTypes.bool.isRequired,

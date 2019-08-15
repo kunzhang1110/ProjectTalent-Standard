@@ -61,8 +61,10 @@ namespace Talent.Services.Profile.Domain.Services
 
         public async Task<bool> UpdateTalentProfile(TalentProfileViewModel model, string updaterId)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            User user = _mapper.Map<TalentProfileViewModel, User>(model);
+            user.Id = updaterId;
+            await _userRepository.Update(user);
+            return true;
         }
 
         public async Task<EmployerProfileViewModel> GetEmployerProfile(string Id, string role)

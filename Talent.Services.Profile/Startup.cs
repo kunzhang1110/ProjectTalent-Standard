@@ -30,6 +30,7 @@ namespace Talent.Services.Profile
         public AutoMapperPofile()
         {
             CreateMap<User, TalentProfileViewModel>();
+            CreateMap<TalentProfileViewModel, User>();
         }
     }
 
