@@ -12,7 +12,7 @@ export class Address extends React.Component {
 
    
     render() {
-       
+        return null;
     }
 
 }
@@ -26,6 +26,6 @@ export class Nationality extends React.Component {
     
     render() {
 
-        
+        return null;
     }
 }

@@ -10,7 +10,7 @@ export default class Skill extends React.Component {
 
   
    render() {
-        
+       return null;
     }
 }
 

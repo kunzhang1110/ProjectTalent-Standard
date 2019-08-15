@@ -12,7 +12,7 @@ export default class Language extends React.Component {
 
 
     render() {
-
+        return null;
         
     }
 }

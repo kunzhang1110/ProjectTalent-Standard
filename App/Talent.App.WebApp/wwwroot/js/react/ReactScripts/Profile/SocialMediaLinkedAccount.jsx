@@ -18,7 +18,7 @@ export default class SocialMediaLinkedAccount extends React.Component {
 
 
     render() {
-
+        return null;
     }
 
 }

@@ -1,17 +1,18 @@
-﻿using Talent.Common.Contracts;
-using Talent.Common.Models;
-using Talent.Services.Profile.Domain.Contracts;
-using Talent.Services.Profile.Models.Profile;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
+using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using MongoDB.Driver;
-using MongoDB.Bson;
-using Talent.Services.Profile.Models;
-using Microsoft.AspNetCore.Http;
-using System.IO;
+using Talent.Common.Contracts;
+using Talent.Common.Models;
 using Talent.Common.Security;
+using Talent.Services.Profile.Domain.Contracts;
+using Talent.Services.Profile.Models;
+using Talent.Services.Profile.Models.Profile;
 
 namespace Talent.Services.Profile.Domain.Services
 {
@@ -24,6 +25,7 @@ namespace Talent.Services.Profile.Domain.Services
         IRepository<Job> _jobRepository;
         IRepository<Recruiter> _recruiterRepository;
         IFileService _fileService;
+        IMapper _mapper;
 
 
         public ProfileService(IUserAppContext userAppContext,
@@ -32,7 +34,8 @@ namespace Talent.Services.Profile.Domain.Services
                               IRepository<Employer> employerRepository,
                               IRepository<Job> jobRepository,
                               IRepository<Recruiter> recruiterRepository,
-                              IFileService fileService)
+                              IFileService fileService,
+                              IMapper mapper)
         {
             _userAppContext = userAppContext;
             _userLanguageRepository = userLanguageRepository;
@@ -41,6 +44,7 @@ namespace Talent.Services.Profile.Domain.Services
             _jobRepository = jobRepository;
             _recruiterRepository = recruiterRepository;
             _fileService = fileService;
+            _mapper = mapper;
         }
 
         public bool AddNewLanguage(AddLanguageViewModel language)
@@ -51,8 +55,8 @@ namespace Talent.Services.Profile.Domain.Services
 
         public async Task<TalentProfileViewModel> GetTalentProfile(string Id)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            User user = await _userRepository.GetByIdAsync(Id);
+            return _mapper.Map<User, TalentProfileViewModel>(user);
         }
 
         public async Task<bool> UpdateTalentProfile(TalentProfileViewModel model, string updaterId)
@@ -350,7 +354,7 @@ namespace Talent.Services.Profile.Domain.Services
             //Your code here;
             throw new NotImplementedException();
         }
-         
+
         public async Task<int> GetTotalTalentsForClient(string clientId, string recruiterId)
         {
             //Your code here;

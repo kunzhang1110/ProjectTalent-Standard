@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Principal;
-using System.Threading.Tasks;
-using Talent.Common.Auth;
-using Talent.Common.Commands;
-using Talent.Common.Contracts;
-using Talent.Common.Mongo;
-using Talent.Common.RabbitMq;
-using Talent.Common.Security;
-using Talent.Common.Services;
-using Talent.Services.Profile.Domain.Contracts;
-using Talent.Services.Profile.Domain.Services;
-using Talent.Services.Profile.Handler;
+﻿using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -20,12 +6,33 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using System;
+using System.Security.Principal;
+using Talent.Common.Auth;
 using Talent.Common.Aws;
+using Talent.Common.Commands;
+using Talent.Common.Contracts;
+using Talent.Common.Models;
+using Talent.Common.Mongo;
+using Talent.Common.RabbitMq;
+using Talent.Common.Security;
+using Talent.Common.Services;
+using Talent.Services.Profile.Domain.Contracts;
+using Talent.Services.Profile.Domain.Services;
+using Talent.Services.Profile.Handler;
+using Talent.Services.Profile.Models.Profile;
 
 namespace Talent.Services.Profile
 {
+
+    public class AutoMapperPofile : AutoMapper.Profile
+    {
+        public AutoMapperPofile()
+        {
+            CreateMap<User, TalentProfileViewModel>();
+        }
+    }
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -38,6 +45,7 @@ namespace Talent.Services.Profile
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAutoMapper(typeof(AutoMapperPofile));
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowWebAppAccess", builder =>
@@ -70,8 +78,10 @@ namespace Talent.Services.Profile
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             Func<IServiceProvider, IPrincipal> getPrincipal =
                      (sp) => sp.GetService<IHttpContextAccessor>().HttpContext.User;
-            services.AddScoped(typeof(Func<IPrincipal>), sp => {
-                Func<IPrincipal> func = () => {
+            services.AddScoped(typeof(Func<IPrincipal>), sp =>
+            {
+                Func<IPrincipal> func = () =>
+                {
                     return getPrincipal(sp);
                 };
                 return func;
@@ -84,10 +94,7 @@ namespace Talent.Services.Profile
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+
             app.UseCors("AllowWebAppAccess");
             app.UseMvc();
         }
