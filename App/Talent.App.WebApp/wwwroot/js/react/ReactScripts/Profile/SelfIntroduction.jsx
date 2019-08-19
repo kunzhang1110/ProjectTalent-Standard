@@ -24,10 +24,6 @@ export default class SelfIntroduction extends React.Component {
         this.renderDisplay = this.renderDisplay.bind(this)
     }
 
-    componentDidMount() {
-        $('.ui.button.social-media')
-            .popup();
-    }
 
     openEdit() {
         this.setState({
@@ -53,7 +49,6 @@ export default class SelfIntroduction extends React.Component {
 
     saveSelfIntroduction() {
         const data = Object.assign({}, { description: this.state.newDescription, summary: this.state.newSummary })
-        console.log(data)
         this.props.saveProfileData(data)
         this.closeEdit()
     }

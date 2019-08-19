@@ -36,9 +36,11 @@ export class ChildSingleInput extends React.Component {
     };
 
     render() {
+        let widthClass = this.props.width ? `${this.props.width} wide` : "";
+
         if (this.props.minLength <= 100 || this.props.minLength==null) {
             return (
-                <div className="field">
+                <div className={"field " + widthClass}>
                     <label>{this.props.label}</label>
                     <input
                         type={this.props.inputType}

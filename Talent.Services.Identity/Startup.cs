@@ -1,9 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Security.Principal;
-using System.Threading.Tasks;
-using System.Web;
 using Talent.Common.Auth;
 using Talent.Common.Commands;
 using Talent.Common.Contracts;
@@ -13,13 +14,6 @@ using Talent.Common.Security;
 using Talent.Common.Services;
 using Talent.Services.Identity.Domain.Services;
 using Talent.Services.Identity.Handlers;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
 namespace Talent.Services.Identity
 {
@@ -61,8 +55,10 @@ namespace Talent.Services.Identity
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             Func<IServiceProvider, IPrincipal> getPrincipal =
                      (sp) => sp.GetService<IHttpContextAccessor>().HttpContext.User;
-            services.AddScoped(typeof(Func<IPrincipal>), sp => {
-                Func<IPrincipal> func = () => {
+            services.AddScoped(typeof(Func<IPrincipal>), sp =>
+            {
+                Func<IPrincipal> func = () =>
+                {
                     return getPrincipal(sp);
                 };
                 return func;
@@ -77,7 +73,7 @@ namespace Talent.Services.Identity
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                //app.UseDeveloperExceptionPage();
             }
             app.UseCors("AllowWebApp");
             app.UseMvc();

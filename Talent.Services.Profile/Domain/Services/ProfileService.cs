@@ -62,7 +62,17 @@ namespace Talent.Services.Profile.Domain.Services
         public async Task<bool> UpdateTalentProfile(TalentProfileViewModel model, string updaterId)
         {
             User user = _mapper.Map<TalentProfileViewModel, User>(model);
+            User existingUser = await _userRepository.GetByIdAsync(updaterId);
             user.Id = updaterId;
+            user.UId = existingUser.UId;
+            user.CreatedOn = existingUser.CreatedOn;
+            user.CreatedBy = existingUser.CreatedBy;
+            user.UpdatedOn = DateTime.Now;
+            user.UpdatedBy = updaterId;
+            user.IsDeleted = existingUser.IsDeleted;
+            user.Login = existingUser.Login;
+
+
             await _userRepository.Update(user);
             return true;
         }

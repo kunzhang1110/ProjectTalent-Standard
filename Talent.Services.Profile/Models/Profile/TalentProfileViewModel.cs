@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Talent.Common.Models;
 
 namespace Talent.Services.Profile.Models.Profile
@@ -23,7 +21,7 @@ namespace Talent.Services.Profile.Models.Profile
         public Address Address { get; set; }
         public string Nationality { get; set; }
         public string VisaStatus { get; set; }
-        public DateTime? VisaExpiryDate { get; set; } 
+        public DateTime? VisaExpiryDate { get; set; }
         public string ProfilePhoto { get; set; }
         public string ProfilePhotoUrl { get; set; }
 
@@ -41,5 +39,6 @@ namespace Talent.Services.Profile.Models.Profile
         public List<AddEducationViewModel> Education { get; set; }
         public List<AddCertificationViewModel> Certifications { get; set; }
         public List<ExperienceViewModel> Experience { get; set; }
+
     }
 }
