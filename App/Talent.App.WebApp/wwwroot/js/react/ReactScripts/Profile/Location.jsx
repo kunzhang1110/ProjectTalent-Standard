@@ -163,12 +163,85 @@ export class Nationality extends React.Component {
     constructor(props) {
         super(props)
 
+        this.state = {
+            showEditSection: false,
+            newNationality: ""
+        }
+
+        this.openEdit = this.openEdit.bind(this)
+        this.closeEdit = this.closeEdit.bind(this)
+        this.handleChange = this.handleChange.bind(this)
+        this.saveNationality = this.saveNationality.bind(this)
+        this.renderEdit = this.renderEdit.bind(this)
+        this.renderDisplay = this.renderDisplay.bind(this)
+    }
+
+    openEdit() {
+        const nationality = Object.assign({}, this.props.nationality)
+        this.setState({
+            showEditSection: true,
+            newAddress: nationality
+        })
+    }
+
+    closeEdit() {
+        this.setState({
+            showEditSection: false
+        })
+    }
+
+    handleChange(event) {
+        const data = Object.assign({}, this.state.nationality)
+        data[event.target.name] = event.target.value
+ 
+        this.setState({
+            newNationality: data.country
+        })
+    }
+
+    saveNationality() {
+        const data = { nationality: this.state.newNationality };
+        this.props.saveProfileData(data)
+        this.closeEdit()
     }
 
 
     render() {
+        return (
+            this.state.showEditSection ? this.renderEdit() : this.renderDisplay()
+        )
+    }
 
-        return null;
+    renderEdit() {
+        return (
+            <div className='ui sixteen wide column'>
+                <Form.Group>
+                    <CountryInput
+                        country={this.state.newAddress.country}
+                        controlFunc={this.handleChange}
+                        width="six" />
+                </Form.Group>
+                <button type="button" className="ui teal button" onClick={this.saveNationality}>Save</button>
+                <button type="button" className="ui button" onClick={this.closeEdit}>Cancel</button>
+            </div>
+        )
+    }
+
+    renderDisplay() {
+
+        let nationality = this.props.nationality ? this.props.nationality: "";
+
+
+        return (
+            <div className='row'>
+                <div className="ui sixteen wide column">
+                    <React.Fragment>
+                        <p>{nationality}</p>
+                    </React.Fragment>
+                    <button type="button" className="ui right floated teal button" onClick={this.openEdit}>Edit</button>
+                </div>
+            </div>
+        )
     }
 }
 

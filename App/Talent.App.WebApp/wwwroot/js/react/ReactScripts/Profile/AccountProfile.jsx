@@ -76,7 +76,6 @@ export default class AccountProfile extends React.Component {
             },
             type: "GET",
             success: function (res) {
-                console.log(res.data)
                 this.updateWithoutSave(res.data)
             }.bind(this)
         })
@@ -190,7 +189,7 @@ export default class AccountProfile extends React.Component {
                                             tooltip='Select your nationality'
                                         >
                                             <Nationality
-                                                nationalityData={this.state.profileData.nationality}
+                                                nationality={this.state.profileData.nationality}
                                                 saveProfileData={this.updateAndSaveData}
                                             />
                                         </FormItemWrapper>
