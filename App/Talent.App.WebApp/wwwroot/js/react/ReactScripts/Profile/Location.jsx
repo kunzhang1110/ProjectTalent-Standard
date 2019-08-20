@@ -10,9 +10,7 @@ export class Address extends React.Component {
     constructor(props) {
         super(props)
 
-        const address = props.address ?
-            Object.assign({}, props.address)
-            : {
+        const address = {
                 city: "",
                 country: "",
                 number: "",
@@ -20,7 +18,6 @@ export class Address extends React.Component {
                 street: "",
                 suburb: ""
             }
-
         this.state = {
             showEditSection: false,
             newAddress: address
@@ -49,7 +46,6 @@ export class Address extends React.Component {
     }
 
     handleChange(event) {
-        console.log(event.target.value)
         const data = Object.assign({}, this.state.newAddress)
         data[event.target.name] = event.target.value
 
@@ -63,7 +59,7 @@ export class Address extends React.Component {
     }
 
     saveAddress() {
-        const data = Object.assign({}, this.state.newAddress)
+        const data = { address: this.state.newAddress };
         this.props.saveProfileData(data)
         this.closeEdit()
     }
@@ -110,25 +106,42 @@ export class Address extends React.Component {
                     />
                 </Form.Group>
                 <Form.Group>
-                    <CountryInput country={this.state.newAddress.country} controlFunc={this.handleChange}/>
-
+                    <CountryInput
+                        country={this.state.newAddress.country}
+                        controlFunc={this.handleChange}
+                        width="six"/>
+                    <CityInput
+                        country={this.state.newAddress.country}
+                        city={this.state.newAddress.city}
+                        controlFunc={this.handleChange}
+                        width="five"/>
+                    <ChildSingleInput
+                        inputType="text"
+                        label="Postcode"
+                        name="postCode"
+                        value={this.state.newAddress.postCode}
+                        controlFunc={this.handleChange}
+                        maxLength={10}
+                        width="five"
+                        errorMessage="Please enter a valid postcode"
+                    />
                 </Form.Group>       
 
-                <button type="button" className="ui teal button" onClick={this.saveContact}>Save</button>
+                <button type="button" className="ui teal button" onClick={this.saveAddress}>Save</button>
                 <button type="button" className="ui button" onClick={this.closeEdit}>Cancel</button>
             </div>
         )
     }
 
     renderDisplay() {
-
+     
         let number = this.props.address ? this.props.address.number : "";
         let street = this.props.address ? this.props.address.street : "";
-        let surburb = this.props.address ? this.props.address.surburb : "";
-        let postcode = this.props.address ? this.props.address.postcode : "";
+        let suburb = this.props.address ? this.props.address.suburb : "";
+        let postCode = this.props.address ? this.props.address.postCode : "";
         let city = this.props.address ? this.props.address.city : "";
         let country = this.props.address ? this.props.address.country : "";
-        let addressString = this.props.address ? `${number}, ${street}, ${surburb}, ${postcode}` : "";
+        let addressString = this.props.address ? `${number}, ${street}, ${suburb}, ${postCode}` : "";
 
         return (
             <div className='row'>
@@ -165,12 +178,14 @@ class CountryInput extends React.Component {
     }
 
     render() {
+        let widthClass = this.props.width ? `${this.props.width} wide` : "";
+
         let countriesOptions = [];
         const selectedCountry = this.props.country ? this.props.country : "";
         countriesOptions = Object.keys(countries).map((x) => <option key={x} value={x}>{x}</option>);
 
         return (
-            <div>
+            <div className={"field " + widthClass}>
                 <label>Country</label>
                 <select className="ui right labeled dropdown"
                     placeholder="Country"
@@ -183,6 +198,36 @@ class CountryInput extends React.Component {
             </div>
         )
     }
+}
 
+class CityInput extends React.Component {
+    constructor(props) {
+        super(props)
+    }
 
+    render() {
+        let widthClass = this.props.width ? `${this.props.width} wide` : "";
+
+        const selectedCountry = this.props.country ? this.props.country : "";
+        const selectedCity = this.props.city ? this.props.city : "";
+
+        if (selectedCountry != "" && selectedCountry != null) {
+            var citiesOptions = countries[selectedCountry].map(x => <option key={x} value={x}> {x}</option>); 
+        }
+
+        return (
+            <div className={"field " + widthClass}>
+                <label>City</label>
+                <select
+                    className="ui dropdown"
+                    placeholder="City"
+                    value={selectedCity}
+                    onChange={this.props.controlFunc}
+                    name="city">
+                    <option value=""> Select a town or city</option>
+                    {citiesOptions}
+                </select>
+            </div>
+        )
+    }
 }
