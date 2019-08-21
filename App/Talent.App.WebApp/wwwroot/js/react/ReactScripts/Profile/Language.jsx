@@ -1,6 +1,6 @@
 ﻿/* Language section */
 import React from 'react';
-import { Table, Icon, Button, Input, Dropdown } from 'semantic-ui-react';
+import { Table, Icon, Button, Input, Dropdown,Grid } from 'semantic-ui-react';
 import Cookies from 'js-cookie';
 
 export const levelOptions = [
@@ -37,12 +37,16 @@ export default class Language extends React.Component {
         this.openAddNew = this.openAddNew.bind(this);
         this.closeAddNew = this.closeAddNew.bind(this);
         this.addLanguage = this.addLanguage.bind(this);
+        this.updateLanguage = this.updateLanguage.bind(this);
+        this.deleteLanguage = this.deleteLanguage.bind(this);
     }
 
     componentDidMount() {
-        this.setState({
-            languages: this.props.languageData
-        })
+        if (this.props.languageData) {
+            this.setState({
+                languages: this.props.languageData
+            })
+        }
     }
 
     openAddNew() {
@@ -63,6 +67,17 @@ export default class Language extends React.Component {
         this.setState({ languages, showAddSection: false });
     }
 
+    updateLanguage(newLanguage) {
+        let languages = this.state.languages.slice(0);
+        let languageInState = languages.filter(l => l.id == newLanguage.id)[0];
+        Object.assign(languageInState, newLanguage)
+        this.setState({ languages });
+    }
+
+    deleteLanguage(id) {
+        let languages = this.state.languages.filter(l => l.id != id);
+        this.setState({ languages });
+    }
 
     render() {
         return (
@@ -95,9 +110,10 @@ export default class Language extends React.Component {
                                 return (
                                     <LanguageInput
                                         closeAddNew={this.closeAddNew}
-                                        addLanguage={this.addLanguage}
+                                        updateLanguage={this.updateLanguage}
+                                        deleteLanguage={this.deleteLanguage}
                                         language={language}
-                                        key={language.name + language.level}
+                                        key={language.id}
                                     />
                                 )
                             }
@@ -119,12 +135,13 @@ class LanguageInput extends React.Component {
             name: "",
             level: "",
             id: "",
-            currentUserId: 0
+            currentUserId: 0,
+            isDeleted: false
         }
         this.state = {
             language
         }
-        this.addHandler = this.addHandler.bind(this);
+        this.addUpdateHandler = this.addUpdateHandler.bind(this);
         this.changeHandler = this.changeHandler.bind(this);
         this.editHandler = this.editHandler.bind(this);
         this.cancelEditHandler = this.cancelEditHandler.bind(this);
@@ -142,7 +159,7 @@ class LanguageInput extends React.Component {
         })
     }
 
-    addHandler(e) {
+    addUpdateHandler(e) {
         e.preventDefault();
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
@@ -154,17 +171,23 @@ class LanguageInput extends React.Component {
             type: "POST",
             data: JSON.stringify(this.state.language),
             success: function (res) {
-                console.log(res)
+                console.log(res);
+                let newLanguage = Object.assign({}, this.state.language);
+                if (this.state.language.id == "") {//create
+                    newLanguage.id = res.id;
+                    this.props.addLanguage(newLanguage);
+                } else { //edit
+                    this.setState({ edit: false })
+                    this.props.updateLanguage(newLanguage);  
+                }
 
-            },
+            }.bind(this),
             error: function (res, a, b) {
                 console.log(res)
                 console.log(a)
                 console.log(b)
             }
         })
-        //let newLanguage = this.state.language;
-        //this.props.addLanguage(newLanguage)
     }
 
     editHandler(e) {
@@ -179,8 +202,25 @@ class LanguageInput extends React.Component {
 
     deleteHandler(e) {
         e.preventDefault();
-        //ajax call
-        //callback
+        var cookies = Cookies.get('talentAuthToken');
+        $.ajax({
+            url: 'http://localhost:60290/profile/profile/deleteLanguage',
+            headers: {
+                'Authorization': 'Bearer ' + cookies,
+                'Content-Type': 'application/json'
+            },
+            type: "POST",
+            data: JSON.stringify(this.props.language),
+            success: function (res) {
+                console.log(res);
+                this.props.deleteLanguage(res.id)
+            }.bind(this),
+            error: function (res, a, b) {
+                console.log(res)
+                console.log(a)
+                console.log(b)
+            }
+        })
     }
 
     render() {
@@ -208,7 +248,7 @@ class LanguageInput extends React.Component {
                     options={levelOptions}
                     onChange={this.changeHandler}
                 />
-                <Button onClick={this.addHandler}>Add</Button>
+                <Button onClick={this.addUpdateHandler}>Add</Button>
                 <Button onClick={this.props.closeAddNew}> Cancel</Button>
             </React.Fragment>
         )
@@ -216,23 +256,26 @@ class LanguageInput extends React.Component {
 
     renderEdit() {
         return (
-            <React.Fragment>
-                <Input
-                    placeholder='Add Language'
-                    name="name"
-                    value={this.state.language.name}
-                    onChange={this.changeHandler} />
-                <Dropdown
-                    placeholder='Language Level'
-                    selection
-                    name="level"
-                    value={this.state.language.level}
-                    options={levelOptions}
-                    onChange={this.changeHandler}
-                />
-                <Button onClick={this.addHandler}>Update</Button>
-                <Button onClick={this.cancelEditHandler}> Cancel</Button>
-            </React.Fragment>
+            <Table.Row>
+                <Table.Cell colSpan="3">
+                            <Input
+                                placeholder='Add Language'
+                                name="name"
+                                value={this.state.language.name}
+                                onChange={this.changeHandler} />
+                            <Dropdown
+                                placeholder='Language Level'
+                                selection
+                                name="level"
+                                value={this.state.language.level}
+                                options={levelOptions}
+                                onChange={this.changeHandler}
+                            />
+                            <Button onClick={this.addUpdateHandler} inverted color="blue">Update</Button>
+                            <Button onClick={this.cancelEditHandler} inverted color="red"> Cancel</Button>
+         
+                </Table.Cell>
+            </Table.Row>
         )
     }
 

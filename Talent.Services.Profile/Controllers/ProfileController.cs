@@ -158,8 +158,9 @@ namespace Talent.Services.Profile.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
         public async Task<ActionResult> DeleteLanguage([FromBody] AddLanguageViewModel language)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            language.IsDeleted = true;
+            var id = await _profileService.AddUpdateLanguage(language);
+            return Json(new { Id = id });
         }
 
         [HttpGet("getSkill")]
@@ -172,10 +173,10 @@ namespace Talent.Services.Profile.Controllers
 
         [HttpPost("addSkill")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
-        public ActionResult AddSkill([FromBody]AddSkillViewModel skill)
+        public async Task<IActionResult> AddSkill([FromBody]AddSkillViewModel skill)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            var id = await _profileService.AddUpdateSkill(skill);
+            return Json(new { Id = id });
         }
 
         [HttpPost("updateSkill")]
@@ -190,8 +191,9 @@ namespace Talent.Services.Profile.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
         public async Task<IActionResult> DeleteSkill([FromBody]AddSkillViewModel skill)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            skill.IsDeleted = true;
+            var id = await _profileService.AddUpdateSkill(skill);
+            return Json(new { Id = id });
         }
 
         [HttpGet("getCertification")]

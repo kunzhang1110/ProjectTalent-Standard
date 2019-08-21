@@ -21,6 +21,7 @@ namespace Talent.Services.Profile.Domain.Services
         private readonly IUserAppContext _userAppContext;
         IRepository<UserLanguage> _userLanguageRepository;
         IRepository<User> _userRepository;
+        IRepository<UserSkill> _userSkillRepository;
         IRepository<Employer> _employerRepository;
         IRepository<Job> _jobRepository;
         IRepository<Recruiter> _recruiterRepository;
@@ -30,6 +31,7 @@ namespace Talent.Services.Profile.Domain.Services
 
         public ProfileService(IUserAppContext userAppContext,
                               IRepository<UserLanguage> userLanguageRepository,
+                              IRepository<UserSkill> userSkillRepository,
                               IRepository<User> userRepository,
                               IRepository<Employer> employerRepository,
                               IRepository<Job> jobRepository,
@@ -39,6 +41,7 @@ namespace Talent.Services.Profile.Domain.Services
         {
             _userAppContext = userAppContext;
             _userLanguageRepository = userLanguageRepository;
+            _userSkillRepository = userSkillRepository;
             _userRepository = userRepository;
             _employerRepository = employerRepository;
             _jobRepository = jobRepository;
@@ -59,7 +62,15 @@ namespace Talent.Services.Profile.Domain.Services
                 var languageInDb = await _userLanguageRepository.GetByIdAsync(language.Id);
                 languageInDb.Language = language.Name;
                 languageInDb.LanguageLevel = language.Level;
+                languageInDb.IsDeleted = language.IsDeleted;
                 await _userLanguageRepository.Update(languageInDb);
+
+                var user = await _userRepository.GetByIdAsync(_userAppContext.CurrentUserId);
+                var userLanguageInDB = user.Languages.Single(l => l.Id == languageInDb.Id); //find original user language
+                userLanguageInDB.Language = languageInDb.Language;
+                userLanguageInDB.LanguageLevel = languageInDb.LanguageLevel;
+                userLanguageInDB.IsDeleted = languageInDb.IsDeleted;
+                await _userRepository.Update(user);
                 return language.Id;
             }
             else //create
@@ -77,7 +88,40 @@ namespace Talent.Services.Profile.Domain.Services
                 return newLanguage.Id;
 
             }
+        }
 
+        public async Task<string> AddUpdateSkill(AddSkillViewModel skill)
+        {
+            if (skill.Id != null && skill.Id != "") //update
+            {
+                var skillInDb = await _userSkillRepository.GetByIdAsync(skill.Id);
+                skillInDb.Skill = skill.Name;
+                skillInDb.ExperienceLevel = skill.Level;
+                skillInDb.IsDeleted = skill.IsDeleted;
+                await _userSkillRepository.Update(skillInDb);
+
+                var user = await _userRepository.GetByIdAsync(_userAppContext.CurrentUserId);
+                var userSkillInDB = user.Skills.Single(l => l.Id == skillInDb.Id); //find original user skill
+                userSkillInDB.Skill = skillInDb.Skill;
+                userSkillInDB.ExperienceLevel = skillInDb.ExperienceLevel;
+                userSkillInDB.IsDeleted = skillInDb.IsDeleted;
+                await _userRepository.Update(user);
+                return skill.Id;
+            }
+            else //create
+            {
+                var newSkill = new UserSkill()
+                {
+                    Skill = skill.Name,
+                    ExperienceLevel = skill.Level,
+                };
+                await _userSkillRepository.Add(newSkill);
+                var user = await _userRepository.GetByIdAsync(_userAppContext.CurrentUserId);
+                user.Skills.Add(newSkill);
+                await _userRepository.Update(user);
+                return newSkill.Id;
+
+            }
         }
 
         public async Task<TalentProfileViewModel> GetTalentProfile(string Id)
@@ -89,19 +133,38 @@ namespace Talent.Services.Profile.Domain.Services
             List<AddLanguageViewModel> languagesViewModel = new List<AddLanguageViewModel>();
             foreach (var lang in userLanguages)
             {
-                languagesViewModel.Add(new AddLanguageViewModel()
+                if (lang.IsDeleted == false)
                 {
-                    Name = lang.Language,
-                    Level = lang.LanguageLevel,
-                    Id = lang.Id,
-                    CurrentUserId = lang.UserId
-                });
+                    languagesViewModel.Add(new AddLanguageViewModel()
+                    {
+                        Name = lang.Language,
+                        Level = lang.LanguageLevel,
+                        Id = lang.Id,
+                        CurrentUserId = lang.UserId
+                    });
+                }
+            }
+            //Mapping Skill
+            List<UserSkill> userSkills = user.Skills;
+            List<AddSkillViewModel> skillsViewModel = new List<AddSkillViewModel>();
+            foreach (var skill in userSkills)
+            {
+                if (skill.IsDeleted == false)
+                {
+                    skillsViewModel.Add(new AddSkillViewModel()
+                    {
+                        Name = skill.Skill,
+                        Level = skill.ExperienceLevel,
+                        Id = skill.Id,
+                    });
+                }
             }
 
 
             //Mapping Profile
             TalentProfileViewModel profileViewModel = _mapper.Map<User, TalentProfileViewModel>(user);
             profileViewModel.Languages = languagesViewModel;
+            profileViewModel.Skills = skillsViewModel;
 
             return profileViewModel;
         }
