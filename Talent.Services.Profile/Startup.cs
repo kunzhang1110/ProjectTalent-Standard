@@ -29,8 +29,8 @@ namespace Talent.Services.Profile
     {
         public AutoMapperPofile()
         {
-            CreateMap<User, TalentProfileViewModel>();
-            CreateMap<TalentProfileViewModel, User>();
+            CreateMap<User, TalentProfileViewModel>().ForMember(x => x.Languages, opt => opt.Ignore());
+            CreateMap<TalentProfileViewModel, User>().ForMember(x => x.Languages, opt => opt.Ignore());
         }
     }
 

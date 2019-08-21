@@ -49,14 +49,61 @@ namespace Talent.Services.Profile.Domain.Services
 
         public bool AddNewLanguage(AddLanguageViewModel language)
         {
-            //Your code here;
             throw new NotImplementedException();
+        }
+
+        public async Task<string> AddUpdateLanguage(AddLanguageViewModel language)
+        {
+            if (language.Id != null && language.Id != "") //update
+            {
+                var languageInDb = await _userLanguageRepository.GetByIdAsync(language.Id);
+                languageInDb.Language = language.Name;
+                languageInDb.LanguageLevel = language.Level;
+                await _userLanguageRepository.Update(languageInDb);
+                return language.Id;
+            }
+            else //create
+            {
+                var newLanguage = new UserLanguage()
+                {
+                    Language = language.Name,
+                    LanguageLevel = language.Level,
+                    UserId = _userAppContext.CurrentUserId
+                };
+                await _userLanguageRepository.Add(newLanguage);
+                var user = await _userRepository.GetByIdAsync(_userAppContext.CurrentUserId);
+                user.Languages.Add(newLanguage);
+                await _userRepository.Update(user);
+                return newLanguage.Id;
+
+            }
+
         }
 
         public async Task<TalentProfileViewModel> GetTalentProfile(string Id)
         {
             User user = await _userRepository.GetByIdAsync(Id);
-            return _mapper.Map<User, TalentProfileViewModel>(user);
+
+            //Mapping Language
+            List<UserLanguage> userLanguages = user.Languages;
+            List<AddLanguageViewModel> languagesViewModel = new List<AddLanguageViewModel>();
+            foreach (var lang in userLanguages)
+            {
+                languagesViewModel.Add(new AddLanguageViewModel()
+                {
+                    Name = lang.Language,
+                    Level = lang.LanguageLevel,
+                    Id = lang.Id,
+                    CurrentUserId = lang.UserId
+                });
+            }
+
+
+            //Mapping Profile
+            TalentProfileViewModel profileViewModel = _mapper.Map<User, TalentProfileViewModel>(user);
+            profileViewModel.Languages = languagesViewModel;
+
+            return profileViewModel;
         }
 
         public async Task<bool> UpdateTalentProfile(TalentProfileViewModel model, string updaterId)

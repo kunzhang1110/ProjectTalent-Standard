@@ -1,17 +1,17 @@
-﻿using Talent.Services.Profile.Models.Profile;
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Talent.Services.Profile.Models;
 using Talent.Common.Models;
-using Microsoft.AspNetCore.Http;
+using Talent.Services.Profile.Models;
+using Talent.Services.Profile.Models.Profile;
 
 namespace Talent.Services.Profile.Domain.Contracts
 {
     public interface IProfileService
     {
         bool AddNewLanguage(AddLanguageViewModel language);
+        Task<string> AddUpdateLanguage(AddLanguageViewModel language);
 
         Task<TalentProfileViewModel> GetTalentProfile(String Id);
         Task<IEnumerable<string>> GetTalentSuggestionIds(string employerOrJobId, bool forJob, int position, int increment);

@@ -58,7 +58,7 @@ export default class AccountProfile extends React.Component {
     init() {
         let loaderData = this.state.loaderData;
         loaderData.allowedUsers.push("Talent");
-        loaderData.isLoading = false;
+        loaderData.isLoading = true;
         this.setState({ loaderData, })
     }
 
@@ -76,6 +76,7 @@ export default class AccountProfile extends React.Component {
             },
             type: "GET",
             success: function (res) {
+                console.log(res.data)
                 this.updateWithoutSave(res.data)
             }.bind(this)
         })
@@ -84,8 +85,10 @@ export default class AccountProfile extends React.Component {
     //updates component's state without saving data
     updateWithoutSave(newValues) {
         let newProfile = Object.assign({}, this.state.profileData, newValues)
+        let loaderData = Object.assign({}, this.state.loaderData, { isLoading: false })
         this.setState({
-            profileData: newProfile
+            profileData: newProfile,
+            loaderData
         })
     }
 

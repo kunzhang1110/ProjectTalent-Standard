@@ -139,10 +139,11 @@ namespace Talent.Services.Profile.Controllers
 
         [HttpPost("addLanguage")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
-        public ActionResult AddLanguage([FromBody] AddLanguageViewModel language)
+        public async Task<ActionResult> AddLanguage([FromBody] AddLanguageViewModel language)
         {
-            //Your code here;
-            throw new NotImplementedException();
+
+            var id = await _profileService.AddUpdateLanguage(language);
+            return Json(new { Id = id });
         }
 
         [HttpPost("updateLanguage")]
@@ -409,9 +410,17 @@ namespace Talent.Services.Profile.Controllers
         public async Task<IActionResult> GetTalentProfile(String id = "")
         {
             String talentId = String.IsNullOrWhiteSpace(id) ? _userAppContext.CurrentUserId : id;
-            var userProfile = await _profileService.GetTalentProfile(talentId);
+            try
+            {
+                var userProfile = await _profileService.GetTalentProfile(talentId);
 
-            return Json(new { Success = true, data = userProfile });
+                return Json(new { Success = true, data = userProfile });
+            }
+            catch (Exception e)
+            {
+                return Json(new { Success = true, error = e.Message });
+            }
+
 
         }
 
