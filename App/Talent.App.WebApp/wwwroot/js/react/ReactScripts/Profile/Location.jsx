@@ -217,7 +217,7 @@ export class Nationality extends React.Component {
             <div className='ui sixteen wide column'>
                 <Form.Group>
                     <CountryInput
-                        country={this.state.newAddress.country}
+                        country={this.state.newNationality}
                         controlFunc={this.handleChange}
                         width="six" />
                 </Form.Group>
