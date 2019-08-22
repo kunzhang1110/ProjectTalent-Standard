@@ -13,6 +13,9 @@ namespace Talent.Services.Profile.Domain.Contracts
         bool AddNewLanguage(AddLanguageViewModel language);
         Task<string> AddUpdateLanguage(AddLanguageViewModel language);
         Task<string> AddUpdateSkill(AddSkillViewModel skill);
+
+        Task<string> AddUpdateExperience(ExperienceViewModel experience);
+
         Task<TalentProfileViewModel> GetTalentProfile(String Id);
         Task<IEnumerable<string>> GetTalentSuggestionIds(string employerOrJobId, bool forJob, int position, int increment);
         Task<IEnumerable<TalentSnapshotViewModel>> GetTalentSnapshotList(string employerOrJobId, bool forJob, int position, int increment);

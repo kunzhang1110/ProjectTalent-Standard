@@ -22,6 +22,7 @@ namespace Talent.Services.Profile.Domain.Services
         IRepository<UserLanguage> _userLanguageRepository;
         IRepository<User> _userRepository;
         IRepository<UserSkill> _userSkillRepository;
+        IRepository<UserExperience> _userExperienceRepository;
         IRepository<Employer> _employerRepository;
         IRepository<Job> _jobRepository;
         IRepository<Recruiter> _recruiterRepository;
@@ -32,6 +33,7 @@ namespace Talent.Services.Profile.Domain.Services
         public ProfileService(IUserAppContext userAppContext,
                               IRepository<UserLanguage> userLanguageRepository,
                               IRepository<UserSkill> userSkillRepository,
+                              IRepository<UserExperience> userExperienceRepository,
                               IRepository<User> userRepository,
                               IRepository<Employer> employerRepository,
                               IRepository<Job> jobRepository,
@@ -42,6 +44,7 @@ namespace Talent.Services.Profile.Domain.Services
             _userAppContext = userAppContext;
             _userLanguageRepository = userLanguageRepository;
             _userSkillRepository = userSkillRepository;
+            _userExperienceRepository = userExperienceRepository;
             _userRepository = userRepository;
             _employerRepository = employerRepository;
             _jobRepository = jobRepository;
@@ -124,6 +127,34 @@ namespace Talent.Services.Profile.Domain.Services
             }
         }
 
+
+        public async Task<string> AddUpdateExperience(ExperienceViewModel experience)
+        {
+            if (experience.Id != null && experience.Id != "") //update
+            {
+                var experienceInDb = await _userExperienceRepository.GetByIdAsync(experience.Id);
+                _mapper.Map(experience, experienceInDb);
+                await _userExperienceRepository.Update(experienceInDb);
+
+                var user = await _userRepository.GetByIdAsync(_userAppContext.CurrentUserId);
+                var userExperienceInDB = user.Experience.Single(ex => ex.Id == experience.Id);
+                _mapper.Map(experience, userExperienceInDB);
+                await _userRepository.Update(user);
+                return experience.Id;
+            }
+            else //create
+            {
+                var newExperience = _mapper.Map<ExperienceViewModel, UserExperience>(experience);
+
+                await _userExperienceRepository.Add(newExperience);
+                var user = await _userRepository.GetByIdAsync(_userAppContext.CurrentUserId);
+                user.Experience.Add(newExperience);
+                await _userRepository.Update(user);
+                return newExperience.Id;
+
+            }
+        }
+
         public async Task<TalentProfileViewModel> GetTalentProfile(string Id)
         {
             User user = await _userRepository.GetByIdAsync(Id);
@@ -159,12 +190,23 @@ namespace Talent.Services.Profile.Domain.Services
                     });
                 }
             }
+            //Mapping Experience
+            List<UserExperience> userExperience = user.Experience;
+            List<ExperienceViewModel> experienceViewModel = new List<ExperienceViewModel>();
+            foreach (var exp in userExperience)
+            {
+                if (exp.IsDeleted == false)
+                {
+                    experienceViewModel.Add(_mapper.Map<UserExperience, ExperienceViewModel>(exp));
+                }
+            }
 
 
             //Mapping Profile
             TalentProfileViewModel profileViewModel = _mapper.Map<User, TalentProfileViewModel>(user);
             profileViewModel.Languages = languagesViewModel;
             profileViewModel.Skills = skillsViewModel;
+            profileViewModel.Experience = experienceViewModel;
 
             return profileViewModel;
         }

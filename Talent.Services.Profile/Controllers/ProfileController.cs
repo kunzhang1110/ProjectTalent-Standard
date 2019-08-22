@@ -163,6 +163,8 @@ namespace Talent.Services.Profile.Controllers
             return Json(new { Id = id });
         }
 
+
+
         [HttpGet("getSkill")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
         public async Task<IActionResult> GetSkills()
@@ -195,6 +197,27 @@ namespace Talent.Services.Profile.Controllers
             var id = await _profileService.AddUpdateSkill(skill);
             return Json(new { Id = id });
         }
+
+        [HttpPost("addExperience")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
+        public async Task<ActionResult> AddUpdateExperience([FromBody] ExperienceViewModel experience)
+        {
+
+            var id = await _profileService.AddUpdateExperience(experience);
+            return Json(new { Id = id });
+
+        }
+
+        [HttpPost("deleteExperience")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
+        public async Task<ActionResult> deleteUpdateExperience([FromBody] ExperienceViewModel experience)
+        {
+
+            experience.IsDeleted = true;
+            var id = await _profileService.AddUpdateExperience(experience);
+            return Json(new { Id = id });
+        }
+
 
         [HttpGet("getCertification")]
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]

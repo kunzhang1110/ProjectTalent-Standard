@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Talent.Services.Profile.Models.Profile
 {
@@ -13,5 +10,6 @@ namespace Talent.Services.Profile.Models.Profile
         public String Responsibilities { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
+        public bool IsDeleted { get; set; }
     }
 }

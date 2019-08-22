@@ -35,6 +35,8 @@ namespace Talent.Services.Profile
             CreateMap<TalentProfileViewModel, User>()
                 .ForMember(x => x.Languages, opt => opt.Ignore())
                 .ForMember(x => x.Skills, opt => opt.Ignore());
+            CreateMap<ExperienceViewModel, UserExperience>();
+            CreateMap<UserExperience, ExperienceViewModel>();
         }
     }
 

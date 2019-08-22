@@ -115,6 +115,7 @@ class ExperienceInput extends React.Component {
     constructor(props) {
         super(props);
         let experience = {
+            id:"",
             company: "",
             position: "",
             responsibilities: "",
@@ -285,22 +286,68 @@ class ExperienceInput extends React.Component {
     }
 
     renderEdit() {
+        var start = moment();
+        var end = moment().add(14, 'days');
+        if (this.props.experience.start != null) {
+            start = moment(this.props.experience.start);
+        }
+        if (this.props.experience.end != null) {
+            end = moment(this.props.experience.end);
+        }
+
         return (
             <Table.Row>
-                <Table.Cell colSpan="3">
-                    <Input
-                        placeholder='Add Experience'
-                        name="name"
-                        value={this.state.experience.name}
-                        onChange={this.changeHandler} />
-                    <Dropdown
-                        placeholder='Experience Level'
-                        selection
-                        name="level"
-                        value={this.state.experience.level}
-                        options={levelOptions}
-                        onChange={this.changeHandler}
-                    />
+                <Table.Cell colSpan="6">
+                    <Form.Group>
+                        <ChildSingleInput
+                            inputType="text"
+                            label="Company"
+                            name="company"
+                            value={this.state.experience.company}
+                            controlFunc={this.changeHandler}
+                            maxLength={80}
+                            width="eight"
+                            errorMessage="Please enter a valid value"
+                        />
+                        <ChildSingleInput
+                            inputType="text"
+                            label="Position"
+                            name="position"
+                            value={this.state.experience.position}
+                            controlFunc={this.changeHandler}
+                            maxLength={80}
+                            width="eight"
+                            errorMessage="Please enter a valid value"
+                        />
+                    </Form.Group>
+                    <Form.Group>
+                        <div className="field eight wide wideDatePicker">
+                            <label>Start Date</label>
+                            <DatePicker
+                                selected={start}
+                                onChange={(date) => this.dateChangeHandler(date, "start")}
+                            />
+                        </div>
+                        <div className="field eight wide wideDatePicker">
+                            <label>End Date</label>
+                            <DatePicker
+                                selected={end}
+                                onChange={(date) => this.dateChangeHandler(date, "end")}
+                            />
+                        </div>
+                    </Form.Group>
+                    <Form.Group>
+                        <ChildSingleInput
+                            inputType="text"
+                            label="Responsibilities"
+                            name="responsibilities"
+                            value={this.state.experience.responsibilities}
+                            controlFunc={this.changeHandler}
+                            maxLength={80}
+                            width="sixteen"
+                            errorMessage="Please enter a valid value"
+                        />
+                    </Form.Group>
                     <Button onClick={this.addUpdateHandler} inverted color="blue">Update</Button>
                     <Button onClick={this.cancelEditHandler} inverted color="red"> Cancel</Button>
                 </Table.Cell>
@@ -309,13 +356,23 @@ class ExperienceInput extends React.Component {
     }
 
     renderDisplay() {
+        var start = "";
+        var end = "";
+        if (this.props.experience.start != null) {
+            start =  moment(this.props.experience.start).format("Do MMM, YYYY");
+        }
+        if (this.props.experience.end != null) {
+            end = moment(this.props.experience.end).format("Do MMM, YYYY");
+        }
+
+
         return (
             <Table.Row>
                 <Table.Cell>{this.props.experience.company}</Table.Cell>
                 <Table.Cell>{this.props.experience.position}</Table.Cell>
                 <Table.Cell>{this.props.experience.responsibilities}</Table.Cell>
-                <Table.Cell>{this.props.experience.start}</Table.Cell>
-                <Table.Cell>{this.props.experience.end}</Table.Cell>
+                <Table.Cell>{start}</Table.Cell>
+                <Table.Cell>{end}</Table.Cell>
                 <Table.Cell textAlign="right">
                     <Icon name='edit' onClick={this.editHandler} link />
                     <Icon name='delete' onClick={this.deleteHandler} link />
