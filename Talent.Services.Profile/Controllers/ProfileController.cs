@@ -264,8 +264,9 @@ namespace Talent.Services.Profile.Controllers
         [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "talent")]
         public async Task<ActionResult> UpdateProfilePhoto()
         {
-            //Your code here;
-            throw new NotImplementedException();
+            IFormFile file = Request.Form.Files[0];
+            var isSuccess = await _profileService.UpdateTalentPhoto(_userAppContext.CurrentUserId, file);
+            return Json(new { name = file.FileName + " " });
         }
 
         [HttpPost("updateTalentCV")]
@@ -398,8 +399,7 @@ namespace Talent.Services.Profile.Controllers
         public async Task<ActionResult> UpdateEmployerPhoto()
         {
             IFormFile file = Request.Form.Files[0];
-            //Your code here;
-            throw new NotImplementedException();
+            return Json(new { name = file.Name });
         }
 
         [HttpPost("updateEmployerVideo")]

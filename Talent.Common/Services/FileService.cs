@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Amazon.S3.Model;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 using Talent.Common.Aws;
 using Talent.Common.Contracts;
 
@@ -17,7 +14,7 @@ namespace Talent.Common.Services
         private readonly string _tempFolder;
         private IAwsService _awsService;
 
-        public FileService(IHostingEnvironment environment, 
+        public FileService(IHostingEnvironment environment,
             IAwsService awsService)
         {
             _environment = environment;
@@ -33,14 +30,25 @@ namespace Talent.Common.Services
 
         public async Task<string> SaveFile(IFormFile file, FileType type)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            var path = Path.Combine(_environment.WebRootPath, _tempFolder, file.FileName);
+
+            using (var fileStream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+            return file.FileName;
         }
 
-        public async Task<bool> DeleteFile(string id, FileType type)
+        public async Task<bool> DeleteFile(string fileName, FileType type)
         {
-            //Your code here;
-            throw new NotImplementedException();
+            var path = Path.Combine(_environment.WebRootPath, _tempFolder, fileName);
+            if (File.Exists(path))
+            {
+                File.Delete(path);
+            }
+
+
+            return true;
         }
 
 
@@ -51,7 +59,7 @@ namespace Talent.Common.Services
             //Your code here;
             throw new NotImplementedException();
         }
-        
+
         private async Task<bool> DeleteFileGeneral(string id, string bucket)
         {
             //Your code here;

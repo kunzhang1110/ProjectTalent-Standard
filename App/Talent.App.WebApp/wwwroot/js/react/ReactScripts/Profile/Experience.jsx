@@ -288,11 +288,11 @@ class ExperienceInput extends React.Component {
     renderEdit() {
         var start = moment();
         var end = moment().add(14, 'days');
-        if (this.props.experience.start != null) {
-            start = moment(this.props.experience.start);
+        if (this.state.experience.start != null) {
+            start = moment(this.state.experience.start);
         }
-        if (this.props.experience.end != null) {
-            end = moment(this.props.experience.end);
+        if (this.state.experience.end != null) {
+            end = moment(this.state.experience.end);
         }
 
         return (

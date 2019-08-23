@@ -1,14 +1,13 @@
-﻿using Talent.Common.Auth;
-using Talent.Common.Contracts;
-using Talent.Common.Models;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Talent.Common.Commands;
 using System.Text;
-using System.Web;
+using System.Threading.Tasks;
+using Talent.Common.Auth;
+using Talent.Common.Commands;
+using Talent.Common.Contracts;
+using Talent.Common.Models;
 using Talent.Services.Identity.Domain.Models;
 using Talent.Services.Identity.Domain.Models.Client;
 
@@ -44,7 +43,7 @@ namespace Talent.Services.Identity.Domain.Services
             _recruitorRepository = recruitorRepository;
             _encryptPassword = encryptPassword;
             _jwtHandler = jwtHandler;
-   
+
         }
 
         /// <summary>
@@ -175,9 +174,9 @@ namespace Talent.Services.Identity.Domain.Services
 
         }
 
-        
 
-       
+
+
 
         public async Task<JsonWebToken> LoginAsync(string email, string password)
         {
@@ -267,9 +266,9 @@ namespace Talent.Services.Identity.Domain.Services
             }
         }
 
-      
 
-        
+
+
         public async Task<bool> UniqueEmail(string email)
         {
             var existingTalent = (await _userRepository.Get(x => x.Login.Username == email)).FirstOrDefault();
@@ -316,7 +315,7 @@ namespace Talent.Services.Identity.Domain.Services
                 return (UserRole.Talent);
             }
         }
-       
+
 
 
         public async Task<string> GeneratePasswordResetTokenAsync(string id)
@@ -330,7 +329,7 @@ namespace Talent.Services.Identity.Domain.Services
             return result.ToString();
         }
 
- 
+
 
         public async Task<bool> VerifyToken(string email, string token)
         {
@@ -653,16 +652,16 @@ namespace Talent.Services.Identity.Domain.Services
         public async Task<bool> ConfirmEmailForClient(ClientInvitationViewModal command)
         {
             var employer = await _employerRepository.GetByIdAsync(command.ClientId);
-            
+
             if (employer.Login.Username != command.ConfirmedEmail)
             {
-                if(!await UniqueEmail(command.ConfirmedEmail))
+                if (!await UniqueEmail(command.ConfirmedEmail))
                 {
                     return false;
                 }
-                    employer.Login.Username = command.ConfirmedEmail;
+                employer.Login.Username = command.ConfirmedEmail;
                 await _employerRepository.Update(employer);
-                
+
             }
             return true;
         }

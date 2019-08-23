@@ -17,6 +17,7 @@ import Experience from './Experience.jsx';
 import { BodyWrapper, loaderData } from '../Layout/BodyWrapper.jsx';
 import { LoggedInNavigation } from '../Layout/LoggedInNavigation.jsx';
 import TalentStatus from './TalentStatus.jsx';
+import moment from 'moment';
 
 export default class AccountProfile extends React.Component {
     constructor(props) {
@@ -33,15 +34,12 @@ export default class AccountProfile extends React.Component {
                 certifications: [],
                 visaStatus: '',
                 visaExpiryDate: '',
-                profilePhoto: '',
+                profilePhotoUrl: '',
                 linkedAccounts: {
                     linkedIn: "",
                     github: ""
                 },
-                jobSeekingStatus: {
-                    status: "",
-                    availableDate: null
-                }
+                jobSeekingStatus: {}
             },
             loaderData: loaderData,
 
@@ -257,7 +255,7 @@ export default class AccountProfile extends React.Component {
                                             tooltip='What is your current status in jobseeking?'
                                         >
                                             <TalentStatus
-                                                status={this.state.profileData.jobSeekingStatus}
+                                                jobSeekingStatus={this.state.profileData.jobSeekingStatus}
                                                 updateProfileData={this.updateWithoutSave}
                                                 saveProfileData={this.updateAndSaveData}
                                             />
@@ -268,7 +266,7 @@ export default class AccountProfile extends React.Component {
                                             hideSegment={true}
                                         >
                                             <PhotoUpload
-                                                imageId={this.state.profileData.profilePhotoUrl}
+                                                profilePhoto={this.state.profileData.profilePhoto}
                                                 updateProfileData={this.updateWithoutSave}
                                                 savePhotoUrl='http://localhost:60290/profile/profile/updateProfilePhoto'
                                             />
