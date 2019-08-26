@@ -133,15 +133,19 @@ export class Address extends React.Component {
         )
     }
 
+    isBlankOrNull(str) {
+        return (!str || str.length === 0)
+    }
+
     renderDisplay() {
-     
-        let number = this.props.address ? this.props.address.number : "";
-        let street = this.props.address ? this.props.address.street : "";
-        let suburb = this.props.address ? this.props.address.suburb : "";
-        let postCode = this.props.address ? this.props.address.postCode : "";
+
+        let number = this.isBlankOrNull(this.props.address.number) ? "" : this.props.address.number;
+        let street = this.isBlankOrNull(this.props.address.street) ? "" : ", " + this.props.address.street;
+        let suburb = this.isBlankOrNull(this.props.address.suburb) ? "" : ", " + this.props.address.suburb;
+        let postCode = this.isBlankOrNull(this.props.address.postCode) ? "" : ", " + this.props.address.postCode;
         let city = this.props.address ? this.props.address.city : "";
         let country = this.props.address ? this.props.address.country : "";
-        let addressString = this.props.address ? `${number}, ${street}, ${suburb}, ${postCode}` : "";
+        let addressString = this.props.address ? `${number} ${street} ${suburb}${postCode}` : "";
 
         return (
             <div className='row'>

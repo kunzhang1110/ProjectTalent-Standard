@@ -12,17 +12,24 @@ export default class PhotoUpload extends Component {
         super(props);
         let profilePhotoUrl = this.props.profilePhoto
             ? imageServerUrl + this.props.profilePhoto
-            : ""
+            : defaultPhotoUrl
 
         this.state = {
             profilePhoto: "",
-            profilePhotoUrl
+            profilePhotoUrl,
+            file:null
         }
         this.uploadHandler = this.uploadHandler.bind(this)
+        this.fileSelector = this.fileSelector.bind(this)
     };
 
-    uploadHandler(e) {
+    fileSelector(e) {
         let file = e.target.files[0]
+        this.setState({ profilePhotoUrl: URL.createObjectURL(file), file: file })
+    }
+
+    uploadHandler(e) {
+        let file = this.state.file;
         const formData = new FormData();
         formData.append('image', file, file.name);
 
@@ -38,9 +45,15 @@ export default class PhotoUpload extends Component {
             type: "POST",
             data: formData,
             success: function (res) {
+                if (res) {
+                    TalentUtil.notification.show("Photo added sucessfully", "success", null, null)
+                } else {
+                    TalentUtil.notification.show("Photo was not added", "error", null, null)
+                }
                 this.setState({
                     profilePhoto: file.name,
-                    profilePhotoUrl: imageServerUrl + file.name
+                    profilePhotoUrl: imageServerUrl + file.name,
+                    file:null
                 })
             }.bind(this),
             error: function (res) {
@@ -54,37 +67,29 @@ export default class PhotoUpload extends Component {
 
 
     render() {
-        if (this.state.profilePhotoUrl != "") {
+ 
             return (
                 <div className='row'>
                     <div className="ui sixteen wide column">
                         <Form.Field>
-                            <Image src={this.state.profilePhotoUrl} circular size='small' />
+                            <Image src={this.state.profilePhotoUrl} circular size='small' as="label" htmlFor="file" />
+                            <input type="file" id="file" hidden onChange={this.fileSelector} />
                         </Form.Field>
-                        <Form.Field>
-                            <Button as="label" htmlFor="file" type="button" color='teal'>
-                                <Icon name="upload" /> Upload
-                    </Button>
-                            <input type="file" id="file" hidden onChange={this.uploadHandler} />
-                        </Form.Field>
+                        {this.state.file
+                            ? <Form.Field>
+                                <Button type="button" color='teal' onClick={this.uploadHandler} >
+                                    <Icon name="upload" /> Upload
+                            </Button>
+                            </Form.Field>
+                            :null
+                        }
+
+
 
                     </div>
                 </div>
             )
-        } else {
-            return (
-                <div className='row'>
-                    <div className="ui sixteen wide column">
-
-                        <Button type="button" circular as="label" htmlFor="file" >
-                            <Image src={defaultPhotoUrl} circular size='mini' />
-                        </Button>
-                        <input type="file" id="file" hidden onChange={this.uploadHandler} />
-
-
-                    </div>
-                </div>)
-        }
+       
 
     }
 }

@@ -176,9 +176,19 @@ class LanguageInput extends React.Component {
                 if (this.state.language.id == "") {//create
                     newLanguage.id = res.id;
                     this.props.addLanguage(newLanguage);
+                    if (res.id) {
+                        TalentUtil.notification.show("Language added sucessfully", "success", null, null)
+                    } else {
+                        TalentUtil.notification.show("Language was not added", "error", null, null)
+                    }
                 } else { //edit
                     this.setState({ edit: false })
                     this.props.updateLanguage(newLanguage);  
+                    if (res.id) {
+                        TalentUtil.notification.show("Language updated sucessfully", "success", null, null)
+                    } else {
+                        TalentUtil.notification.show("Language was not updated", "error", null, null)
+                    }
                 }
 
             }.bind(this),
@@ -212,7 +222,11 @@ class LanguageInput extends React.Component {
             type: "POST",
             data: JSON.stringify(this.props.language),
             success: function (res) {
-                console.log(res);
+                if (res.id) {
+                    TalentUtil.notification.show("Language deleted sucessfully", "success", null, null)
+                } else {
+                    TalentUtil.notification.show("Language was not deleted", "error", null, null)
+                }
                 this.props.deleteLanguage(res.id)
             }.bind(this),
             error: function (res, a, b) {

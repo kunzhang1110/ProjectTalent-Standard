@@ -266,7 +266,7 @@ namespace Talent.Services.Profile.Controllers
         {
             IFormFile file = Request.Form.Files[0];
             var isSuccess = await _profileService.UpdateTalentPhoto(_userAppContext.CurrentUserId, file);
-            return Json(new { name = file.FileName + " " });
+            return Json(new { fileName = file.FileName + "" });
         }
 
         [HttpPost("updateTalentCV")]

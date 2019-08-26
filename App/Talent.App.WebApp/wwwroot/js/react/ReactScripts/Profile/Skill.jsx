@@ -170,9 +170,19 @@ class SkillInput extends React.Component {
                 if (this.state.skill.id == "") {//create
                     newSkill.id = res.id;
                     this.props.addSkill(newSkill);
+                    if (res.id) {
+                        TalentUtil.notification.show("Skill created sucessfully", "success", null, null)
+                    } else {
+                        TalentUtil.notification.show("Skill was not created", "error", null, null)
+                    }
                 } else { //edit
                     this.setState({ edit: false })
                     this.props.updateSkill(newSkill);
+                    if (res.id) {
+                        TalentUtil.notification.show("Skill updated sucessfully", "success", null, null)
+                    } else {
+                        TalentUtil.notification.show("Skill was not updated", "error", null, null)
+                    }
                 }
 
             }.bind(this),
@@ -208,6 +218,11 @@ class SkillInput extends React.Component {
             success: function (res) {
                 console.log(res);
                 this.props.deleteSkill(res.id)
+                if (res.id) {
+                    TalentUtil.notification.show("Skill deleted sucessfully", "success", null, null)
+                } else {
+                    TalentUtil.notification.show("Skill was not deleted", "error", null, null)
+                }
             }.bind(this),
             error: function (res, a, b) {
                 console.log(res)

@@ -145,7 +145,7 @@ class ExperienceInput extends React.Component {
         })
     }
 
-    dateChangeHandler(date, name) {
+    dateChangeHandler(date, name) {//date is an moment object given by Datepicker
         let experience = Object.assign({}, this.state.experience, { [name]: date });
         this.setState({
             experience
@@ -169,9 +169,19 @@ class ExperienceInput extends React.Component {
                 if (this.state.experience.id == "") {//create
                     newExperience.id = res.id;
                     this.props.addExperience(newExperience);
+                    if (res.id) {
+                        TalentUtil.notification.show("Experience added sucessfully", "success", null, null)
+                    } else {
+                        TalentUtil.notification.show("Experience was not added", "error", null, null)
+                    }
                 } else { //edit
                     this.setState({ edit: false })
                     this.props.updateExperience(newExperience);
+                    if (res.id) {
+                        TalentUtil.notification.show("Experience updated sucessfully", "success", null, null)
+                    } else {
+                        TalentUtil.notification.show("Experience was not updated", "error", null, null)
+                    }
                 }
 
             }.bind(this),
@@ -207,6 +217,11 @@ class ExperienceInput extends React.Component {
             success: function (res) {
                 console.log(res);
                 this.props.deleteExperience(res.id)
+                if (res.id) {
+                    TalentUtil.notification.show("Experience deleted sucessfully", "success", null, null)
+                } else {
+                    TalentUtil.notification.show("Experience was not deleted", "error", null, null)
+                }
             }.bind(this),
             error: function (res, a, b) {
                 console.log(res)

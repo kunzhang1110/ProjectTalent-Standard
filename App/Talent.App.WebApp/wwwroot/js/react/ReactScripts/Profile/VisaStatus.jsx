@@ -69,6 +69,8 @@ export default class VisaStatus extends React.Component {
         this.setState({
             [name]: value
         })
+
+
     }
 
     dateChangeHandler(date, name) {
@@ -101,7 +103,10 @@ export default class VisaStatus extends React.Component {
                 <div className="ui sixteen wide column">
                     <React.Fragment>
                         <p>Visa Type: {this.props.visaStatus}</p>
-                        <p>Visa Expiry Date: {visaExpiryDate}</p>
+                        {(this.state.newVisaStatus == "Work Visa" || this.state.newVisaStatus == "Student Visa")
+                            ? <p>Visa Expiry Date: {visaExpiryDate}</p>
+                            : null
+                        }
                     </React.Fragment>
                     <button type="button" className="ui right floated teal button" onClick={this.openEdit}>Edit</button>
                 </div>
