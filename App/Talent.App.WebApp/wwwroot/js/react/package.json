@@ -14,7 +14,8 @@
     "react-router-dom": "^4.2.2"
   },
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "production": "webpack --env.production --config webpack.prod.config"
   },
   "author": "MVP Studio",
   "license": "ISC",
