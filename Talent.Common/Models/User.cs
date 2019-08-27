@@ -6,6 +6,7 @@ using Talent.Common.Contracts;
 
 namespace Talent.Common.Models
 {
+    [BsonIgnoreExtraElements]
     public class User : IMongoCommon
     {
         public Guid UId { get; set; }

@@ -27,44 +27,63 @@ export default class TalentFeed extends React.Component {
         }
 
         this.init = this.init.bind(this);
-
+        this.handleScroll = this.handleScroll.bind(this);
     };
 
     init() {
 
-        
+
         var cookies = Cookies.get('talentAuthToken');
-        $.ajax({
-            url: Profile_URL + '/profile/profile/getEmployerProfile',
-            headers: {
-                'Authorization': 'Bearer ' + cookies,
-                'Content-Type': 'application/json'
-            },
-            type: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (res) {
-                let employerData = null;
-                if (res.employer) {
-                    employerData = res.employer.companyContact
-                    console.log(employerData)
-
-                    //move it else where later
-                    let loaderData = TalentUtil.deepCopy(this.state.loaderData)
-                    loaderData.isLoading = false;
-                    this.setState({ companyDetails: employerData, loaderData})
+        var headers = {
+            'Authorization': 'Bearer ' + cookies,
+        }
+        $.when(
+            //get employer profile
+            $.ajax({
+                url: Profile_URL + '/profile/profile/getEmployerProfile',
+                headers: headers,
+                type: "GET",
+            }),
+            $.ajax({
+                url: Profile_URL + '/profile/profile/getTalent',
+                headers: headers,
+                type: "GET",
+                data: {
+                    position: this.state.loadPosition,
+                    number: this.state.loadNumber
                 }
-            }.bind(this),
-            error: function (res) {
-                console.log(res.status)
-            }
-        }) 
+            }),
+        )
+            .done(function (resEmployer, resFeed) {
+                var employerData = null;
+                var feedData = null;
 
-        this.setState({ loaderData });//comment this
+
+                if (resEmployer[0].employer) {
+                    employerData = resEmployer[0].employer.companyContact
+                }
+                if (resFeed[0].data) {
+                    feedData = this.state.feedData.concat(resFeed[0].data);
+                    console.log(feedData)
+                }
+
+                let loaderData = TalentUtil.deepCopy(this.state.loaderData)
+                loaderData.isLoading = false;
+                this.setState({ companyDetails: employerData, feedData ,loaderData })
+            }.bind(this))
+            .fail(function (e) {
+                console.log(e);
+            })
+
+
+    }
+
+    handleScroll() {
+
     }
 
     componentDidMount() {
-        //window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('scroll', this.handleScroll);
         this.init();
     };
 
@@ -74,22 +93,22 @@ export default class TalentFeed extends React.Component {
         return (
             <BodyWrapper reload={this.init} loaderData={this.state.loaderData}>
                 <section className="page-body">
-                <div className="ui container">
-                    <div className="ui grid">
-                        <div className="row">
-                            <div className="column four wide ">
-                                    <CompanyProfile companyDetails={this.state.companyDetails}/>
+                    <div className="ui container">
+                        <div className="ui grid">
+                            <div className="row">
+                                <div className="column four wide ">
+                                    <CompanyProfile companyDetails={this.state.companyDetails} />
+                                </div>
+                                <div className="column eight wide ">
+                                    Talent Card
                             </div>
-                            <div className="column eight wide ">
-                                Talent Card
-                            </div>
-                            <div className="column four wide">
+                                <div className="column four wide">
                                     <FollowingSuggestion />
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    </section>
+                </section>
             </BodyWrapper>
         )
     }
