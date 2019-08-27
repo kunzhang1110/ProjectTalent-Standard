@@ -29,7 +29,7 @@ export class Images extends React.Component {
         var cookies = Cookies.get('talentAuthToken');
 
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/getEmployerProfileImage/?id=' + Id,
+            url: Profile_URL+'/profile/profile/getEmployerProfileImage/?id=' + Id,
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -137,7 +137,7 @@ export class Images extends React.Component {
         var cookies = Cookies.get('talentAuthToken');
 
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/addEmployerProfileImages',
+            url: Profile_URL+'/profile/profile/addEmployerProfileImages',
             headers: {
                 'Authorization': 'Bearer ' + cookies
             },

@@ -163,7 +163,7 @@ class LanguageInput extends React.Component {
         e.preventDefault();
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/addLanguage',
+            url: Profile_URL+'/profile/profile/addLanguage',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -214,7 +214,7 @@ class LanguageInput extends React.Component {
         e.preventDefault();
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/deleteLanguage',
+            url: Profile_URL+'/profile/profile/deleteLanguage',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
