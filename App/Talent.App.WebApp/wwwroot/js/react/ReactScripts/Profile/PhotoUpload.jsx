@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 import Cookies from 'js-cookie';
 import { Image, Button, Icon, Form } from 'semantic-ui-react';
 
-const imageServerUrl = "http://localhost:60290/images/"
-const defaultPhotoUrl = "http://localhost:60290/images/default.jpg"
+const imageServerUrl = Profile_URL+'/images/'
+const defaultPhotoUrl = Profile_URL+'/images/default.jpg'
 
 export default class PhotoUpload extends Component {
 

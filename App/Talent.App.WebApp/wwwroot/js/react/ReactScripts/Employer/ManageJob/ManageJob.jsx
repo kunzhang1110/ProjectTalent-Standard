@@ -52,7 +52,7 @@ export default class ManageJob extends React.Component {
     };
 
     loadData(callback) {
-        var link = 'http://localhost:51689/listing/listing/getSortedEmployerJobs';
+        var link = Talent_URL+'/listing/listing/getSortedEmployerJobs';
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
             url: link,

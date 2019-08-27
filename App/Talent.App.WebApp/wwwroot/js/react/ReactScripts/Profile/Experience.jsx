@@ -156,7 +156,7 @@ class ExperienceInput extends React.Component {
         e.preventDefault();
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/addExperience',
+            url: Profile_URL+'/profile/profile/addExperience',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -207,7 +207,7 @@ class ExperienceInput extends React.Component {
         e.preventDefault();
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/deleteExperience',
+            url: Profile_URL+'/profile/profile/deleteExperience',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'

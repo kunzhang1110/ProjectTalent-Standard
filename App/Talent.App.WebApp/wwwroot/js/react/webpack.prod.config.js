@@ -5,11 +5,21 @@ var Identity_URL = {
     development: "http://localhost:60998",
 }
 
-var environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+var Profile_URL = {
+    production: "https://talentservicesprofile20190827111024.azurewebsites.net",
+    development: "http://localhost:60290",
+}
+
+var Talent_URL = {
+    production: "https://talentservicestalent20190827111426.azurewebsites.net",
+    development: "http://localhost:51689",
+}
+
+
 
 module.exports = env => {
-
-
+    var environment = env.NODE_ENV === 'production' ? 'production' : 'development';
+ 
     return {
         context: __dirname,
         entry: {
@@ -24,7 +34,9 @@ module.exports = env => {
         mode: 'production',
         plugins: [
             new webpack.DefinePlugin({
-                'Identity_URL': Identity_URL[environment]
+                'Identity_URL': JSON.stringify(Identity_URL[environment]),
+                'Profile_URL': JSON.stringify(Profile_URL[environment]),
+                'Talent_URL': JSON.stringify(Talent_URL[environment]),
             })
         ],
         module: {

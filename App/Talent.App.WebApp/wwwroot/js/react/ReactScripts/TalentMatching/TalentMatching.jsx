@@ -81,24 +81,24 @@ export default class TalentMatching extends React.Component {
     //        });
     //}
 
-    //loadJobs(data) { // url: 'http://localhost:51689/listing/listing/getEmployerJobs',
+    //loadJobs(data) { // url: Talent_URL+'/listing/listing/getEmployerJobs',
         
-    //loadSelectedJob(data) url: 'http://localhost:51689/listing/listing/getJobForTalentMatching',
+    //loadSelectedJob(data) url: Talent_URL+'/listing/listing/getJobForTalentMatching',
 
-    //loadTalentList()  url: 'http://localhost:60290/profile/profile/getTalentList',
+    //loadTalentList()  url: Profile_URL+'/profile/profile/getTalentList',
 
-    //loadTalentFilterList() //url: 'http://localhost:60290/profile/profile/getTalentListFilter',
+    //loadTalentFilterList() //url: Profile_URL+'/profile/profile/getTalentListFilter',
 
-    //loadEmployerFilterList() //url: 'http://localhost:60290/profile/profile/getEmployerListFilter',
+    //loadEmployerFilterList() //url: Profile_URL+'/profile/profile/getEmployerListFilter',
 
 
-    // loadEmployerList() // url: 'http://localhost:60290/profile/profile/getEmployerList',
-    //loadSuggestionList   url: 'http://localhost:60290/profile/profile/getSuggestionList',
+    // loadEmployerList() // url: Profile_URL+'/profile/profile/getEmployerList',
+    //loadSuggestionList   url: Profile_URL+'/profile/profile/getSuggestionList',
 
-   // saveCompanyTalents()   url: 'http://localhost:60290/profile/profile/addTalentSuggestions',
+   // saveCompanyTalents()   url: Profile_URL+'/profile/profile/addTalentSuggestions',
      
 
-    //saveJobTalents()    url: 'http://localhost:60290/profile/profile/addTalentSuggestions',
+    //saveJobTalents()    url: Profile_URL+'/profile/profile/addTalentSuggestions',
        
 
     

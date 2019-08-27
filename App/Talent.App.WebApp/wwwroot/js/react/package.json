@@ -15,7 +15,7 @@
   },
   "scripts": {
     "build": "webpack",
-    "production": "webpack --env.production --config webpack.prod.config"
+    "production": "webpack --env.NODE_ENV=production --config webpack.prod.config"
   },
   "author": "MVP Studio",
   "license": "ISC",

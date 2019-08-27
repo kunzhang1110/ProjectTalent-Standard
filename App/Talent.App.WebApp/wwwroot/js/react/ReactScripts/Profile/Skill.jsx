@@ -157,7 +157,7 @@ class SkillInput extends React.Component {
         e.preventDefault();
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/addSkill',
+            url: Profile_URL+'/profile/profile/addSkill',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
@@ -208,7 +208,7 @@ class SkillInput extends React.Component {
         e.preventDefault();
         var cookies = Cookies.get('talentAuthToken');
         $.ajax({
-            url: 'http://localhost:60290/profile/profile/deleteSkill',
+            url: Profile_URL+'/profile/profile/deleteSkill',
             headers: {
                 'Authorization': 'Bearer ' + cookies,
                 'Content-Type': 'application/json'
