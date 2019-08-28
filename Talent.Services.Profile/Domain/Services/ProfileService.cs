@@ -469,19 +469,26 @@ namespace Talent.Services.Profile.Domain.Services
             var result = new List<TalentSnapshotViewModel>();
             foreach (var talent in talents)
             {
-
-                result.Add(new TalentSnapshotViewModel()
+                try
+                {//some document may not contain certain field
+                    result.Add(new TalentSnapshotViewModel()
+                    {
+                        Id = talent.Id,
+                        Name = talent.FirstName + " " + talent.LastName,
+                        Summary = talent.Summary,
+                        CurrentEmployer = talent.Experience.LastOrDefault().Company,//last employment
+                        Visa = talent.VisaStatus,
+                        Position = talent.Experience.LastOrDefault().Position,//last position
+                        Skills = talent.Skills.Select(skill => skill.Skill).ToList()
+                    });
+                }
+                catch (Exception e)
                 {
-                    Id = talent.Id,
-                    Name = talent.FirstName,
-                    Summary = talent.Summary,
-                    //CurrentEmployer = talent.Experience.Last().Company,//last employment
-                    //Visa = talent.VisaStatus,
-                    //Position = talent.Experience.Last().Position,//last position
-                    //Skills = talent.Skills.Select(skill => skill.Skill).ToList()
-                });
+                    //logging errors
+                }
+
             }
-            return result;
+            return result.Skip((position) * increment).Take(increment);
         }
 
         public async Task<IEnumerable<TalentSnapshotViewModel>> GetTalentSnapshotList(IEnumerable<string> ids)

@@ -1,4 +1,6 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,7 @@ namespace Talent.Common.Services
     {
         private readonly IMongoDatabase _database;
         private IMongoCollection<T> _collection => _database.GetCollection<T>(typeof(T).Name);
+        private IMongoCollection<BsonDocument> _collectionUser => _database.GetCollection<BsonDocument>(typeof(T).Name);
 
         public Repository(IMongoDatabase database)
         {
@@ -112,13 +115,47 @@ namespace Talent.Common.Services
             throw new ApplicationException("Hit retry limit while trying to query MongoDB");
         }
 
+        //public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+        //{
+        //    for (int i = 0; i < 5; ++i)
+        //    {
+        //        try
+        //        {
+        //            return _collection.Find(predicate).ToEnumerable();
+        //        }
+        //        catch (MongoException e)
+        //        {
+        //            await Task.Delay(1000);
+        //        }
+        //    }
+        //    throw new ApplicationException("Hit retry limit while trying to query MongoDB");
+        //}
+
+
+        //temp workaround; get all document
         public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
         {
             for (int i = 0; i < 5; ++i)
             {
                 try
                 {
-                    return _collection.Find(predicate).ToEnumerable();
+                    var results = new List<T>();
+                    FilterDefinition<BsonDocument> filter = new BsonDocument();
+                    await _collectionUser.Find(filter)
+                        .ForEachAsync((document) =>
+                        {
+                            try
+                            {
+                                var documentObject = BsonSerializer.Deserialize<T>(document);
+                                results.Add(documentObject);
+                            }
+                            catch (Exception e)
+                            {
+                                //do logging
+                            }
+                        }
+                    );
+                    return results;
                 }
                 catch (MongoException e)
                 {

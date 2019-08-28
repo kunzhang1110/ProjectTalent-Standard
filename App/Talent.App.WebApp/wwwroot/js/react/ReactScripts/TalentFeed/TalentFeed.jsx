@@ -23,7 +23,8 @@ export default class TalentFeed extends React.Component {
             watchlist: [],
             loaderData: loader,
             loadingFeedData: false,
-            companyDetails: null
+            companyDetails: null,
+            loadMore:false
         }
 
         this.init = this.init.bind(this);
@@ -31,8 +32,6 @@ export default class TalentFeed extends React.Component {
     };
 
     init() {
-
-
         var cookies = Cookies.get('talentAuthToken');
         var headers = {
             'Authorization': 'Bearer ' + cookies,
@@ -64,12 +63,11 @@ export default class TalentFeed extends React.Component {
                 }
                 if (resFeed[0].data) {
                     feedData = this.state.feedData.concat(resFeed[0].data);
-                    console.log(feedData)
                 }
 
                 let loaderData = TalentUtil.deepCopy(this.state.loaderData)
                 loaderData.isLoading = false;
-                this.setState({ companyDetails: employerData, feedData ,loaderData })
+                this.setState({ companyDetails: employerData, feedData, loaderData, loadPosition: 1})
             }.bind(this))
             .fail(function (e) {
                 console.log(e);
@@ -79,7 +77,36 @@ export default class TalentFeed extends React.Component {
     }
 
     handleScroll() {
+        var cookies = Cookies.get('talentAuthToken');
+        var headers = {
+            'Authorization': 'Bearer ' + cookies,
+        }
 
+        $(window).scroll(function () {
+            if (($(window).scrollTop() == $(document).height() - $(window).height()) && this.state.loadMore == false) {
+                this.setState({ loadMore: true }, function () {
+                    $.ajax({
+                        url: Profile_URL + '/profile/profile/getTalent',
+                        headers: headers,
+                        type: "GET",
+                        data: {
+                            position: this.state.loadPosition,
+                            number: this.state.loadNumber
+                        }
+                    }).done(function (resFeed) {
+                        var feedData = null;
+                        var loadPosition = this.state.loadPosition;
+                        if (resFeed.data) {
+                            feedData = this.state.feedData.concat(resFeed.data);
+                            loadPosition++;
+                            console.log(resFeed.data)
+                        }
+
+                        this.setState({ feedData, loadMore: false, loadPosition})
+                    }.bind(this))
+                })
+            }
+        }.bind(this));
     }
 
     componentDidMount() {
@@ -100,8 +127,18 @@ export default class TalentFeed extends React.Component {
                                     <CompanyProfile companyDetails={this.state.companyDetails} />
                                 </div>
                                 <div className="column eight wide ">
-                                    Talent Card
-                            </div>
+                                    {this.state.feedData.map(talent =>
+                                        <TalentCard
+                                            talent={talent}
+                                            key={talent.id}
+                                        />)}
+                                    {this.state.loadMore
+                                        ? <div style={{ 'height': '30rem' }}>
+                                            <div className="ui active loader">
+                                            </div>
+                                        </div>
+                                        : null}
+                                </div>
                                 <div className="column four wide">
                                     <FollowingSuggestion />
                                 </div>

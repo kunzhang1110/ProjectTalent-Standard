@@ -1,4 +1,10 @@
-﻿.margin-top-25px {
+﻿/*Custom css*/
+.float-right-icon{
+    float:right
+}
+
+
+.margin-top-25px {
     margin-top: 25px
 }
 
