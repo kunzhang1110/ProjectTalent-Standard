@@ -26,6 +26,7 @@ namespace Talent.Common.Models
         public Address Address { get; set; }
         public string Nationality { get; set; }
         public string VisaStatus { get; set; }
+
         public JobSeekingStatus JobSeekingStatus { get; set; }
         public DateTime? VisaExpiryDate { get; set; }
         public string Summary { get; set; }

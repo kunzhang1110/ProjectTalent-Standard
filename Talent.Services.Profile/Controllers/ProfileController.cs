@@ -492,7 +492,7 @@ namespace Talent.Services.Profile.Controllers
             }
             catch (Exception e)
             {
-                return Json(new { Success = false, e.Message });
+                return Json(new { Success = false, e.StackTrace, e.Message });
             }
         }
         #endregion

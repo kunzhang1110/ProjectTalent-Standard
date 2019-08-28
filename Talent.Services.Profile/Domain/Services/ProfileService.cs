@@ -464,39 +464,23 @@ namespace Talent.Services.Profile.Domain.Services
         public async Task<IEnumerable<TalentSnapshotViewModel>> GetTalentSnapshotList(string employerOrJobId, bool forJob, int position, int increment)
         {
 
-            //var talents = await _userRepository.FindAsync(user => user.Id != employerOrJobId);
-
-            var talent = await _userRepository.GetByIdAsync("5c7708ce5e7a9a3168fc53c1");
+            var talents = await _userRepository.FindAsync(user => user.FirstName != null);
 
             var result = new List<TalentSnapshotViewModel>();
-            //  //foreach (var talent in talents)
-            //  //{
-
-            result.Add(new TalentSnapshotViewModel()
+            foreach (var talent in talents)
             {
-                Id = talent.Id,
-                Name = talent.FirstName,
-                Summary = talent.Summary,
-                //CurrentEmployer = talent.Experience.Last().Company,//last employment
-                //Visa = talent.VisaStatus,
-                //Position = talent.Experience.Last().Position,//last position
-                //Skills = talent.Skills.Select(skill => skill.Skill).ToList()
-            });
-            //  //}
 
-            //  result.Add(
-            //    new TalentSnapshotViewModel
-            //    {
-            //        CurrentEmployer = "XYZ",
-            //        Position = "Software Developer",
-            //        Name = "Dummy User...",
-            //        PhotoId = "",
-            //        Skills = new List<string> { "C#", ".Net Core", "Javascript", "ReactJS", "PreactJS" },
-            //        Summary = "Veronika Ossi is a set designer living in New York who enjoys kittens, music, and partying.",
-            //        Visa = "Citizen"
-            //    }
-            //);
-
+                result.Add(new TalentSnapshotViewModel()
+                {
+                    Id = talent.Id,
+                    Name = talent.FirstName,
+                    Summary = talent.Summary,
+                    //CurrentEmployer = talent.Experience.Last().Company,//last employment
+                    //Visa = talent.VisaStatus,
+                    //Position = talent.Experience.Last().Position,//last position
+                    //Skills = talent.Skills.Select(skill => skill.Skill).ToList()
+                });
+            }
             return result;
         }
 
