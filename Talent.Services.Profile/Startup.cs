@@ -6,6 +6,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Serilog;
+using Serilog.Events;
 using System;
 using System.Security.Principal;
 using Talent.Common.Auth;
@@ -45,6 +48,14 @@ namespace Talent.Services.Profile
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel
+                .Information()
+                .WriteTo.Debug()
+                .WriteTo.RollingFile("./logs/log-{Date}.txt", LogEventLevel.Information)
+                .WriteTo.Seq("http://localhost:5341/")
+                .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -52,6 +63,7 @@ namespace Talent.Services.Profile
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             services.AddAutoMapper(typeof(AutoMapperPofile));
             services.AddCors(options =>
             {
@@ -99,8 +111,10 @@ namespace Talent.Services.Profile
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            loggerFactory.AddSerilog();
+
             app.UseStaticFiles();
 
 

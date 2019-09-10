@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using MongoDB.Driver;
 using RawRabbit;
 using System;
@@ -42,6 +43,7 @@ namespace Talent.Services.Profile.Controllers
         private readonly IRepository<Recruiter> _recruiterRepository;
         private readonly IAwsService _awsService;
         private readonly string _profileImageFolder;
+        private ILogger<ProfileController> _logger;
 
         public ProfileController(IBusClient busClient,
             IProfileService profileService,
@@ -59,7 +61,8 @@ namespace Talent.Services.Profile.Controllers
             IRepository<Recruiter> recruiterRepository,
             IHostingEnvironment environment,
             IAwsService awsService,
-            IUserAppContext userAppContext)
+            IUserAppContext userAppContext,
+            ILogger<ProfileController> logger)
         {
             _busClient = busClient;
             _profileService = profileService;
@@ -79,6 +82,7 @@ namespace Talent.Services.Profile.Controllers
             _environment = environment;
             _profileImageFolder = "images\\";
             _awsService = awsService;
+            _logger = logger;
         }
 
         #region Talent
@@ -471,8 +475,8 @@ namespace Talent.Services.Profile.Controllers
             try
             {
                 var result = (await _profileService.GetTalentSnapshotList(_userAppContext.CurrentUserId, false, feed.Position, feed.Number)).ToList();
-
                 //Dummy talent to fill out the list once we run out of data
+                _logger.LogInformation("result count is " + result.Count);
                 if (result.Count == 0)
                 {
                     result.Add(
@@ -492,6 +496,7 @@ namespace Talent.Services.Profile.Controllers
             }
             catch (Exception e)
             {
+
                 return Json(new { Success = false, e.StackTrace, e.Message });
             }
         }
