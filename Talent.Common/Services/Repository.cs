@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using Microsoft.Extensions.Logging;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
 using MongoDB.Driver;
 using System;
@@ -15,10 +16,12 @@ namespace Talent.Common.Services
         private readonly IMongoDatabase _database;
         private IMongoCollection<T> _collection => _database.GetCollection<T>(typeof(T).Name);
         private IMongoCollection<BsonDocument> _collectionUser => _database.GetCollection<BsonDocument>(typeof(T).Name);
+        private ILogger<Repository<T>> _logger;
 
-        public Repository(IMongoDatabase database)
+        public Repository(IMongoDatabase database, ILogger<Repository<T>> logger)
         {
             _database = database;
+            _logger = logger;
         }
 
         public IQueryable<T> Collection => _collection.AsQueryable();
@@ -146,12 +149,21 @@ namespace Talent.Common.Services
                         {
                             try
                             {
+                                //var temp = document.GetValue("JobSeekingStatus");
+                                //if (!temp.IsBsonDocument) //if it is a string
+                                //{
+                                //    document.Set("JobSeekingStatus", new JobSeekingStatus() { Status = temp.ToString() }.ToBson());
+                                //}
                                 var documentObject = BsonSerializer.Deserialize<T>(document);
-                                results.Add(documentObject);
+                                if (predicate.Compile()(documentObject))
+                                {
+                                    _logger.LogInformation("FindAsync Info: " + documentObject.Id);
+                                    results.Add(documentObject);
+                                }
                             }
                             catch (Exception e)
                             {
-                                //do logging
+                                _logger.LogError("FindAsync Error: " + e.Message);
                             }
                         }
                     );

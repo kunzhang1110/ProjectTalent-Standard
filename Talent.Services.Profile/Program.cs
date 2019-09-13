@@ -6,6 +6,9 @@ namespace Talent.Services.Profile
     {
         public static void Main(string[] args)
         {
+
+
+
             ServiceHost.Create<Startup>(args)
                 .UseRabbitMq()
                 .Build()

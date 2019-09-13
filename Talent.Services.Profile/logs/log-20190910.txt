@@ -1,0 +1,76 @@
+2019-09-10 11:50:14.682 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-10 11:50:14.681 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=0&number=5  
+2019-09-10 11:50:14.681 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-10 11:50:14.681 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-10 11:50:14.832 +10:00 [Information] Policy execution successful.
+2019-09-10 11:50:14.832 +10:00 [Information] Policy execution successful.
+2019-09-10 11:50:14.832 +10:00 [Information] Policy execution successful.
+2019-09-10 11:50:14.833 +10:00 [Information] Policy execution successful.
+2019-09-10 11:50:14.891 +10:00 [Information] Request finished in 276.8927ms 204 
+2019-09-10 11:50:14.891 +10:00 [Information] Request finished in 276.8666ms 204 
+2019-09-10 11:50:14.891 +10:00 [Information] Request finished in 276.8788ms 204 
+2019-09-10 11:50:14.891 +10:00 [Information] Request finished in 276.8761ms 204 
+2019-09-10 11:50:14.910 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=0&number=5  
+2019-09-10 11:50:14.910 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-10 11:50:14.911 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-10 11:50:14.914 +10:00 [Information] Policy execution successful.
+2019-09-10 11:50:14.914 +10:00 [Information] Policy execution successful.
+2019-09-10 11:50:14.914 +10:00 [Information] Policy execution successful.
+2019-09-10 11:50:15.084 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-10 11:50:15.084 +10:00 [Information] Policy execution successful.
+2019-09-10 11:50:15.620 +10:00 [Information] Failed to validate the token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDRjOWQ4M2IwNThkZTc1NmNmNDM3ZTMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYwOTk4IiwiaWF0IjoxNTY4MDU1OTAzLCJleHAiOjE1NjgwNTk1MDMsInVuaXF1ZV9uYW1lIjpbIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyIsIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyJdLCJ1c2Vycm9sZSI6ImVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wbG95ZXIifQ.bJAtqxo9_DIXZ7rrDdEWjw7ksyzTA7bDci4mcMwBJ3A".
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwt, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2019-09-10 11:50:15.620 +10:00 [Information] Failed to validate the token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDRjOWQ4M2IwNThkZTc1NmNmNDM3ZTMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYwOTk4IiwiaWF0IjoxNTY4MDU1OTAzLCJleHAiOjE1NjgwNTk1MDMsInVuaXF1ZV9uYW1lIjpbIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyIsIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyJdLCJ1c2Vycm9sZSI6ImVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wbG95ZXIifQ.bJAtqxo9_DIXZ7rrDdEWjw7ksyzTA7bDci4mcMwBJ3A".
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwt, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2019-09-10 11:50:15.620 +10:00 [Information] Failed to validate the token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDRjOWQ4M2IwNThkZTc1NmNmNDM3ZTMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYwOTk4IiwiaWF0IjoxNTY4MDU1OTAzLCJleHAiOjE1NjgwNTk1MDMsInVuaXF1ZV9uYW1lIjpbIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyIsIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyJdLCJ1c2Vycm9sZSI6ImVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wbG95ZXIifQ.bJAtqxo9_DIXZ7rrDdEWjw7ksyzTA7bDci4mcMwBJ3A".
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwt, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2019-09-10 11:50:15.620 +10:00 [Information] Failed to validate the token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDRjOWQ4M2IwNThkZTc1NmNmNDM3ZTMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYwOTk4IiwiaWF0IjoxNTY4MDU1OTAzLCJleHAiOjE1NjgwNTk1MDMsInVuaXF1ZV9uYW1lIjpbIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyIsIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyJdLCJ1c2Vycm9sZSI6ImVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wbG95ZXIifQ.bJAtqxo9_DIXZ7rrDdEWjw7ksyzTA7bDci4mcMwBJ3A".
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwt, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2019-09-10 11:50:15.627 +10:00 [Information] "Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'."
+2019-09-10 11:50:15.627 +10:00 [Information] "Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'."
+2019-09-10 11:50:15.627 +10:00 [Information] "Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'."
+2019-09-10 11:50:15.627 +10:00 [Information] "Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'."
+2019-09-10 11:50:15.667 +10:00 [Information] Authorization failed for user: null.
+2019-09-10 11:50:15.667 +10:00 [Information] Authorization failed for user: null.
+2019-09-10 11:50:15.667 +10:00 [Information] Authorization failed for user: null.
+2019-09-10 11:50:15.667 +10:00 [Information] Authorization failed for user: null.
+2019-09-10 11:50:15.676 +10:00 [Information] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'.
+2019-09-10 11:50:15.676 +10:00 [Information] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'.
+2019-09-10 11:50:15.676 +10:00 [Information] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'.
+2019-09-10 11:50:15.676 +10:00 [Information] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'.
+2019-09-10 11:50:15.687 +10:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-09-10 11:50:15.687 +10:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-09-10 11:50:15.687 +10:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-09-10 11:50:15.687 +10:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-09-10 11:50:15.721 +10:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-09-10 11:50:15.721 +10:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-09-10 11:50:15.721 +10:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-09-10 11:50:15.721 +10:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-09-10 11:50:15.726 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 387.6519ms
+2019-09-10 11:50:15.726 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 366.6564ms
+2019-09-10 11:50:15.726 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 387.6606ms
+2019-09-10 11:50:15.726 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" in 387.6082ms
+2019-09-10 11:50:15.727 +10:00 [Information] Request finished in 816.5745ms 401 
+2019-09-10 11:50:15.727 +10:00 [Information] Request finished in 642.978ms 401 
+2019-09-10 11:50:15.727 +10:00 [Information] Request finished in 816.7471ms 401 
+2019-09-10 11:50:15.727 +10:00 [Information] Request finished in 816.5768ms 401 

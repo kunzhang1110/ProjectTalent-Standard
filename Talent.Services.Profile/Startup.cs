@@ -52,7 +52,7 @@ namespace Talent.Services.Profile
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel
                 .Information()
-                .WriteTo.Debug()
+                .WriteTo.Console()
                 .WriteTo.RollingFile("./logs/log-{Date}.txt", LogEventLevel.Information)
                 .WriteTo.Seq("http://localhost:5341/")
                 .CreateLogger();
@@ -116,8 +116,6 @@ namespace Talent.Services.Profile
             loggerFactory.AddSerilog();
 
             app.UseStaticFiles();
-
-
             app.UseCors("AllowWebAppAccess");
             app.UseMvc();
         }

@@ -1,0 +1,861 @@
+2019-09-13 14:55:17.962 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/  
+2019-09-13 14:55:18.729 +10:00 [Information] Request finished in 871.0221ms 404 
+2019-09-13 14:55:20.274 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 14:55:20.291 +10:00 [Information] Policy execution successful.
+2019-09-13 14:55:20.310 +10:00 [Information] Request finished in 37.4066ms 204 
+2019-09-13 14:55:21.214 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 14:55:21.221 +10:00 [Information] Policy execution successful.
+2019-09-13 14:55:22.315 +10:00 [Information] Failed to validate the token "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZDRjOWQ4M2IwNThkZTc1NmNmNDM3ZTMiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjYwOTk4IiwiaWF0IjoxNTY4MDU1OTAzLCJleHAiOjE1NjgwNTk1MDMsInVuaXF1ZV9uYW1lIjpbIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyIsIjVkNGM5ZDgzYjA1OGRlNzU2Y2Y0MzdlMyJdLCJ1c2Vycm9sZSI6ImVtcGxveWVyIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiZW1wbG95ZXIifQ.bJAtqxo9_DIXZ7rrDdEWjw7ksyzTA7bDci4mcMwBJ3A".
+Microsoft.IdentityModel.Tokens.SecurityTokenExpiredException: IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'.
+   at Microsoft.IdentityModel.Tokens.Validators.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, SecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateLifetime(Nullable`1 notBefore, Nullable`1 expires, JwtSecurityToken securityToken, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateTokenPayload(JwtSecurityToken jwt, TokenValidationParameters validationParameters)
+   at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.ValidateToken(String token, TokenValidationParameters validationParameters, SecurityToken& validatedToken)
+   at Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerHandler.HandleAuthenticateAsync()
+2019-09-13 14:55:22.323 +10:00 [Information] "Bearer" was not authenticated. Failure message: "IDX10223: Lifetime validation failed. The token is expired. ValidTo: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]', Current time: '[PII is hidden by default. Set the 'ShowPII' flag in IdentityModelEventSource.cs to true to reveal it.]'."
+2019-09-13 14:55:22.350 +10:00 [Information] Authorization failed for user: null.
+2019-09-13 14:55:22.363 +10:00 [Information] Authorization failed for the request at filter '"Microsoft.AspNetCore.Mvc.Authorization.AuthorizeFilter"'.
+2019-09-13 14:55:22.379 +10:00 [Information] Executing ChallengeResult with authentication schemes (["Bearer"]).
+2019-09-13 14:55:22.421 +10:00 [Information] AuthenticationScheme: "Bearer" was challenged.
+2019-09-13 14:55:22.428 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 932.3155ms
+2019-09-13 14:55:22.429 +10:00 [Information] Request finished in 1215.3591ms 401 
+2019-09-13 14:55:30.832 +10:00 [Information] Request starting HTTP/1.1 POST http://127.0.0.1:42624/iisintegration  0
+2019-09-13 14:55:30.833 +10:00 [Information] Request finished in 0.4912ms 202 
+2019-09-13 14:55:35.106 +10:00 [Information] Unable to connect to broker
+2019-09-13 14:55:59.152 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 14:55:59.303 +10:00 [Information] Policy execution successful.
+2019-09-13 14:55:59.375 +10:00 [Information] Request finished in 287.4936ms 204 
+2019-09-13 14:55:59.402 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 14:55:59.405 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:00.077 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:00.085 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:00.105 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:00.850 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 14:56:01.547 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 14:56:01.632 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 1889.0293ms
+2019-09-13 14:56:01.636 +10:00 [Information] Request finished in 2233.8435ms 200 application/json; charset=utf-8
+2019-09-13 14:56:09.396 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 14:56:09.397 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:09.398 +10:00 [Information] Request finished in 1.2975ms 204 
+2019-09-13 14:56:09.402 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 14:56:09.402 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:09.402 +10:00 [Information] Request finished in 0.9419ms 204 
+2019-09-13 14:56:09.410 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-13 14:56:09.410 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:09.410 +10:00 [Information] Request finished in 0.5974ms 204 
+2019-09-13 14:56:09.642 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 14:56:09.643 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:09.651 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:09.652 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:09.652 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:09.653 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 14:56:09.727 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 14:56:09.728 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 76.8032ms
+2019-09-13 14:56:09.728 +10:00 [Information] Request finished in 91.0146ms 200 application/json; charset=utf-8
+2019-09-13 14:56:09.778 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getEmployerProfile application/json 
+2019-09-13 14:56:09.778 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:09.778 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 14:56:09.778 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:09.779 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:09.779 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:09.779 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:09.780 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 14:56:09.839 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 14:56:09.839 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 60.5816ms
+2019-09-13 14:56:09.839 +10:00 [Information] Request finished in 61.3004ms 200 application/json; charset=utf-8
+2019-09-13 14:56:09.859 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:09.860 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:09.864 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:10.014 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" with arguments (["", ""]) - ModelState is Valid
+2019-09-13 14:56:10.105 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, employer = Talent.Services.Profile.Models.Profile.EmployerProfileViewModel }".
+2019-09-13 14:56:10.138 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" in 279.6115ms
+2019-09-13 14:56:10.139 +10:00 [Information] Request finished in 361.2606ms 200 application/json; charset=utf-8
+2019-09-13 14:56:20.498 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 14:56:20.498 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:20.498 +10:00 [Information] Request finished in 0.4936ms 204 
+2019-09-13 14:56:20.502 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 14:56:20.503 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:20.503 +10:00 [Information] Request finished in 0.9526ms 204 
+2019-09-13 14:56:20.507 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-13 14:56:20.507 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:20.508 +10:00 [Information] Request finished in 0.7675ms 204 
+2019-09-13 14:56:20.512 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=0&number=5  
+2019-09-13 14:56:20.512 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:20.512 +10:00 [Information] Request finished in 0.5724ms 204 
+2019-09-13 14:56:20.737 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 14:56:20.738 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:20.738 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:20.739 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:20.739 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:20.739 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 14:56:20.797 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 14:56:20.797 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 59.1419ms
+2019-09-13 14:56:20.797 +10:00 [Information] Request finished in 60.0449ms 200 application/json; charset=utf-8
+2019-09-13 14:56:21.150 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=0&number=5  
+2019-09-13 14:56:21.150 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:21.165 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-13 14:56:21.166 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:21.166 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:21.166 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:21.167 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:21.167 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" with arguments (["", ""]) - ModelState is Valid
+2019-09-13 14:56:21.179 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 14:56:21.180 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:21.180 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:21.180 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:21.180 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:21.294 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 14:56:21.200 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, employer = Talent.Services.Profile.Models.Profile.EmployerProfileViewModel }".
+2019-09-13 14:56:21.218 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:21.295 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" in 129.0323ms
+2019-09-13 14:56:21.295 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:21.295 +10:00 [Information] Request finished in 129.6503ms 200 application/json; charset=utf-8
+2019-09-13 14:56:21.295 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:21.349 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 14:56:21.349 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 169.1728ms
+2019-09-13 14:56:21.349 +10:00 [Information] Request finished in 169.9345ms 200 application/json; charset=utf-8
+2019-09-13 14:56:21.402 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 14:56:22.006 +10:00 [Information] result count is 5
+2019-09-13 14:56:22.012 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 14:56:22.024 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 805.3936ms
+2019-09-13 14:56:22.028 +10:00 [Information] Request finished in 878.0966ms 200 application/json; charset=utf-8
+2019-09-13 14:56:30.575 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=1&number=5  
+2019-09-13 14:56:30.576 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:30.576 +10:00 [Information] Request finished in 0.5245ms 204 
+2019-09-13 14:56:30.604 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=1&number=5  
+2019-09-13 14:56:30.604 +10:00 [Information] Policy execution successful.
+2019-09-13 14:56:30.605 +10:00 [Information] Successfully validated the token.
+2019-09-13 14:56:30.605 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 14:56:30.605 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 14:56:30.607 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 14:56:30.941 +10:00 [Information] result count is 5
+2019-09-13 14:56:30.941 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 14:56:30.941 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 336.9398ms
+2019-09-13 14:56:30.942 +10:00 [Information] Request finished in 337.9378ms 200 application/json; charset=utf-8
+2019-09-13 15:00:37.948 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/  
+2019-09-13 15:00:37.948 +10:00 [Information] Request starting HTTP/1.1 DEBUG http://localhost:60290/  0
+2019-09-13 15:00:38.596 +10:00 [Information] Request finished in 707.8113ms 200 
+2019-09-13 15:00:38.969 +10:00 [Information] Request finished in 1175.3526ms 404 
+2019-09-13 15:00:49.778 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=2&number=5  
+2019-09-13 15:00:49.870 +10:00 [Information] Policy execution successful.
+2019-09-13 15:00:49.929 +10:00 [Information] Request finished in 190.3861ms 204 
+2019-09-13 15:00:49.943 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=2&number=5  
+2019-09-13 15:00:49.946 +10:00 [Information] Policy execution successful.
+2019-09-13 15:00:50.550 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:00:50.557 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:00:50.572 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:00:51.220 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 15:00:51.931 +10:00 [Information] FindAsync Info: Id: 5c61ee7b7eafa7389c4cdd51
+2019-09-13 15:00:51.932 +10:00 [Information] FindAsync Info: Id: 5c6b49176877e95384309f81
+2019-09-13 15:00:51.932 +10:00 [Information] FindAsync Info: Id: 5c6b50b1de0184323890e628
+2019-09-13 15:00:51.941 +10:00 [Information] FindAsync Info: Id: 5c6cb5a98c85090c88fb0bc8
+2019-09-13 15:00:51.941 +10:00 [Information] FindAsync Info: Id: 5c6e3e468b15951f9044bc1e
+2019-09-13 15:00:51.942 +10:00 [Information] FindAsync Info: Id: 5c6e5c5dfd5c7a0198f479aa
+2019-09-13 15:00:51.942 +10:00 [Information] FindAsync Info: Id: 5c73142451e20d3c10503e46
+2019-09-13 15:00:51.944 +10:00 [Information] FindAsync Info: Id: 5c7323046fd0643d50f17e75
+2019-09-13 15:00:51.945 +10:00 [Information] FindAsync Info: Id: 5c73466152958b1cc00ee1b3
+2019-09-13 15:00:51.945 +10:00 [Information] FindAsync Info: Id: 5c73526f1e00f43cfc303193
+2019-09-13 15:00:51.946 +10:00 [Information] FindAsync Info: Id: 5c736468b484dd1e4c96a8d6
+2019-09-13 15:00:51.946 +10:00 [Information] FindAsync Info: Id: 5c75bd1c249c2a3b447c4f6d
+2019-09-13 15:00:51.947 +10:00 [Information] FindAsync Info: Id: 5c76469fbc10fb008c21b1bf
+2019-09-13 15:00:51.947 +10:00 [Information] FindAsync Info: Id: 5c76f500796ecf2db4b60513
+2019-09-13 15:00:51.947 +10:00 [Information] FindAsync Info: Id: 5c76f5c7796ecf2db4b60514
+2019-09-13 15:00:51.948 +10:00 [Information] FindAsync Info: Id: 5c76faf1e8df6004747719cf
+2019-09-13 15:00:51.948 +10:00 [Information] FindAsync Info: Id: 5c7705f5cdb1576460f2fa95
+2019-09-13 15:00:51.949 +10:00 [Information] FindAsync Info: Id: 5c7708ce5e7a9a3168fc53c1
+2019-09-13 15:00:51.949 +10:00 [Information] FindAsync Info: Id: 5c7745bfe1e2c281349e6f92
+2019-09-13 15:00:51.950 +10:00 [Information] FindAsync Info: Id: 5c7a16883d0772387c62e20a
+2019-09-13 15:00:51.950 +10:00 [Information] FindAsync Info: Id: 5c7c6e6d3de7ed2604e17777
+2019-09-13 15:00:51.951 +10:00 [Information] FindAsync Info: Id: 5c7e527f1781aa2b2882e5dc
+2019-09-13 15:00:51.951 +10:00 [Information] FindAsync Info: Id: 5c7e52c11781aa2b2882e5dd
+2019-09-13 15:00:51.952 +10:00 [Information] FindAsync Info: Id: 5c7f22f767f7ee016caff84c
+2019-09-13 15:00:51.952 +10:00 [Information] FindAsync Info: Id: 5c7f236caad5e95974f4486c
+2019-09-13 15:00:51.953 +10:00 [Information] FindAsync Info: Id: 5c7f6de13edb8721748cfe83
+2019-09-13 15:00:51.953 +10:00 [Information] FindAsync Info: Id: 5c80418fc9cc002a6ced9c5e
+2019-09-13 15:00:51.954 +10:00 [Information] FindAsync Info: Id: 5c805a6b0abb6a2254d80bf1
+2019-09-13 15:00:51.954 +10:00 [Information] FindAsync Info: Id: 5c806bf45038284388aa62ac
+2019-09-13 15:00:51.955 +10:00 [Information] FindAsync Info: Id: 5c8078911a2aab37688d9169
+2019-09-13 15:00:51.955 +10:00 [Information] FindAsync Info: Id: 5c84f9453fab4b2d28a5cf0c
+2019-09-13 15:00:51.956 +10:00 [Information] FindAsync Info: Id: 5c870f4a07b7d7473081f825
+2019-09-13 15:00:51.956 +10:00 [Information] FindAsync Info: Id: 5c887072e4af3a2f780dce42
+2019-09-13 15:00:51.957 +10:00 [Information] FindAsync Info: Id: 5c887332c722ec0bd45704c3
+2019-09-13 15:00:51.969 +10:00 [Information] FindAsync Info: Id: 5c89935980aae83d587bd533
+2019-09-13 15:00:51.969 +10:00 [Information] FindAsync Info: Id: 5c90178ce07653102c8dd240
+2019-09-13 15:00:51.970 +10:00 [Information] FindAsync Info: Id: 5c904d6a7215da49243a8b25
+2019-09-13 15:00:51.970 +10:00 [Information] FindAsync Info: Id: 5c9053ba0d188f9aa02ae1ad
+2019-09-13 15:00:51.971 +10:00 [Information] FindAsync Info: Id: 5c9056f035ec5e1304765769
+2019-09-13 15:00:51.971 +10:00 [Information] FindAsync Info: Id: 5c905ffef2681f2d70ba2ab7
+2019-09-13 15:00:51.972 +10:00 [Information] FindAsync Info: Id: 5c92cddba5ff9233983aaa39
+2019-09-13 15:00:51.972 +10:00 [Information] FindAsync Info: Id: 5c92ec5ac7105f34081a6555
+2019-09-13 15:00:51.972 +10:00 [Information] FindAsync Info: Id: 5c92f67cdf09ad2d48d17c29
+2019-09-13 15:00:51.973 +10:00 [Information] FindAsync Info: Id: 5c942b88c588cc449060ce40
+2019-09-13 15:00:51.973 +10:00 [Information] FindAsync Info: Id: 5c942ba5c588cc449060ce41
+2019-09-13 15:00:51.973 +10:00 [Information] FindAsync Info: Id: 5c942baac588cc449060ce42
+2019-09-13 15:00:51.974 +10:00 [Information] FindAsync Info: Id: 5c95dd0a32c1d44c84e63264
+2019-09-13 15:00:51.974 +10:00 [Information] FindAsync Info: Id: 5c9ad0d92a69bc1a8ce6e1a1
+2019-09-13 15:00:51.974 +10:00 [Information] FindAsync Info: Id: 5c9af273717cbb09102e1ee5
+2019-09-13 15:00:51.975 +10:00 [Information] FindAsync Info: Id: 5c9af66e0aa6c608d4ddb543
+2019-09-13 15:00:51.975 +10:00 [Information] FindAsync Info: Id: 5c9afaf1ef32df28244a8bfd
+2019-09-13 15:00:51.975 +10:00 [Information] FindAsync Info: Id: 5c9c2cd0e0cb4f0006c1c19a
+2019-09-13 15:00:51.976 +10:00 [Information] FindAsync Info: Id: 5c9c8d70e6153f0006a3d43c
+2019-09-13 15:00:51.976 +10:00 [Information] FindAsync Info: Id: 5ca171b984488a55c0c6801e
+2019-09-13 15:00:51.977 +10:00 [Information] FindAsync Info: Id: 5ca172eb84488a55c0c6801f
+2019-09-13 15:00:51.977 +10:00 [Information] FindAsync Info: Id: 5ca286f3d5aca2448c5ed80e
+2019-09-13 15:00:51.978 +10:00 [Information] FindAsync Info: Id: 5ca2a3bfbb5b380006453a14
+2019-09-13 15:00:51.978 +10:00 [Information] FindAsync Info: Id: 5ca2bd0af079094404f14ac2
+2019-09-13 15:00:51.978 +10:00 [Information] FindAsync Info: Id: 5ca3deeeb4c1db02f0cefcb6
+2019-09-13 15:00:51.979 +10:00 [Information] FindAsync Info: Id: 5ca3e02ab4c1db02f0cefcb7
+2019-09-13 15:00:51.979 +10:00 [Information] FindAsync Info: Id: 5ca3e431b4c1db02f0cefcb8
+2019-09-13 15:00:51.980 +10:00 [Information] FindAsync Info: Id: 5ca3e7f9b4c1db02f0cefcb9
+2019-09-13 15:00:51.980 +10:00 [Information] FindAsync Info: Id: 5ca46bb4416e8e00065aed20
+2019-09-13 15:00:51.981 +10:00 [Information] FindAsync Info: Id: 5ca5a9b1378f480006ba18e7
+2019-09-13 15:00:51.981 +10:00 [Information] FindAsync Info: Id: 5ca6f77447280306c0212e17
+2019-09-13 15:00:51.981 +10:00 [Information] FindAsync Info: Id: 5caae7506b893639e4cf4a59
+2019-09-13 15:00:51.982 +10:00 [Information] FindAsync Info: Id: 5cabcd3efbc6b908d0557879
+2019-09-13 15:00:51.982 +10:00 [Information] FindAsync Info: Id: 5cabd5dea3cb6d0006b96ce9
+2019-09-13 15:00:51.983 +10:00 [Information] FindAsync Info: Id: 5cabe5f79bf6f10fc0f96e9b
+2019-09-13 15:00:51.983 +10:00 [Information] FindAsync Info: Id: 5cac063a010aa81ff0bbfc15
+2019-09-13 15:00:51.983 +10:00 [Information] FindAsync Info: Id: 5cac340615f8c60f78609f10
+2019-09-13 15:00:51.984 +10:00 [Information] FindAsync Info: Id: 5cad1f7fcf6f7806ac2eaee6
+2019-09-13 15:00:51.984 +10:00 [Information] FindAsync Info: Id: 5cad2495cf6f7806ac2eaee7
+2019-09-13 15:00:51.985 +10:00 [Information] FindAsync Info: Id: 5cad29b1cf6f7806ac2eaee8
+2019-09-13 15:00:51.985 +10:00 [Information] FindAsync Info: Id: 5cad363aaea05938b8c7ccf3
+2019-09-13 15:00:51.986 +10:00 [Information] FindAsync Info: Id: 5cad5348cf6f7806ac2eaeea
+2019-09-13 15:00:51.986 +10:00 [Information] FindAsync Info: Id: 5cad54fbcf6f7806ac2eaeeb
+2019-09-13 15:00:51.986 +10:00 [Information] FindAsync Info: Id: 5cad5527e1f53400065bd4a0
+2019-09-13 15:00:51.987 +10:00 [Information] FindAsync Info: Id: 5cad7479aa3b72036cce736e
+2019-09-13 15:00:51.987 +10:00 [Information] FindAsync Info: Id: 5cad80a4aa3b72036cce736f
+2019-09-13 15:00:51.988 +10:00 [Information] FindAsync Info: Id: 5cad8322aa3b72036cce7370
+2019-09-13 15:00:51.988 +10:00 [Information] FindAsync Info: Id: 5cad8338aa3b72036cce7371
+2019-09-13 15:00:51.989 +10:00 [Information] FindAsync Info: Id: 5cae7629b107412cbc66f608
+2019-09-13 15:00:51.989 +10:00 [Information] FindAsync Info: Id: 5caeb2301a08100f5c67f6bb
+2019-09-13 15:00:51.990 +10:00 [Information] FindAsync Info: Id: 5cafd45bbf1e5a011005e273
+2019-09-13 15:00:51.990 +10:00 [Information] FindAsync Info: Id: 5cb1d1f1cc904761d0ebd0dd
+2019-09-13 15:00:51.991 +10:00 [Information] FindAsync Info: Id: 5cb1d62db388263394b0b3fd
+2019-09-13 15:00:51.991 +10:00 [Information] FindAsync Info: Id: 5cb1dfe6a32dd64e008b9bc0
+2019-09-13 15:00:51.991 +10:00 [Information] FindAsync Info: Id: 5cb30c13a81b795110c37c67
+2019-09-13 15:00:51.991 +10:00 [Information] FindAsync Info: Id: 5cb31821a81b795110c37c68
+2019-09-13 15:00:51.992 +10:00 [Information] FindAsync Info: Id: 5cb54aaa2568c10aa824d162
+2019-09-13 15:00:51.992 +10:00 [Information] FindAsync Info: Id: 5cb54c862568c10aa824d163
+2019-09-13 15:00:51.992 +10:00 [Information] FindAsync Info: Id: 5cb55270f6c24d0318dcaec5
+2019-09-13 15:00:51.993 +10:00 [Information] FindAsync Info: Id: 5cb8e889dfa92691f0359ab8
+2019-09-13 15:00:51.993 +10:00 [Information] FindAsync Info: Id: 5cba501507606c5958665130
+2019-09-13 15:00:51.993 +10:00 [Information] FindAsync Info: Id: 5cba638842b427555025d4d2
+2019-09-13 15:00:51.994 +10:00 [Information] FindAsync Info: Id: 5cbbfe960a2e00241401aa31
+2019-09-13 15:00:51.994 +10:00 [Information] FindAsync Info: Id: 5cbc14740a2e00241401aa32
+2019-09-13 15:00:51.994 +10:00 [Information] FindAsync Info: Id: 5cbc1c553a5be9277c45b3f3
+2019-09-13 15:00:51.995 +10:00 [Information] FindAsync Info: Id: 5cbfba7a5c25e066d09d9c2d
+2019-09-13 15:00:51.995 +10:00 [Information] FindAsync Info: Id: 5cc02c30fa13e92f44a511e5
+2019-09-13 15:00:52.192 +10:00 [Information] FindAsync Info: Id: 5cc0cee72033a700e403d0a8
+2019-09-13 15:00:52.192 +10:00 [Information] FindAsync Info: Id: 5cc13c63ddde7339b8090ef9
+2019-09-13 15:00:52.193 +10:00 [Information] FindAsync Info: Id: 5cc15f4da220263450848cfe
+2019-09-13 15:00:52.193 +10:00 [Information] FindAsync Info: Id: 5cc23789f743877c701a47c9
+2019-09-13 15:00:52.193 +10:00 [Information] FindAsync Info: Id: 5cc23affb07ced7d2c60c85e
+2019-09-13 15:00:52.194 +10:00 [Information] FindAsync Info: Id: 5cc25129ab64a75e3c78ac19
+2019-09-13 15:00:52.194 +10:00 [Information] FindAsync Info: Id: 5cc3f649355f9f3d6c24497b
+2019-09-13 15:00:52.195 +10:00 [Information] FindAsync Info: Id: 5cc4864d6562213510db624c
+2019-09-13 15:00:52.196 +10:00 [Information] FindAsync Info: Id: 5cc5363530041e45285abb6a
+2019-09-13 15:00:52.196 +10:00 [Information] FindAsync Info: Id: 5cc62f0842ab10c1644ffc0a
+2019-09-13 15:00:52.196 +10:00 [Information] FindAsync Info: Id: 5cc63df97439f31e8063b18d
+2019-09-13 15:00:52.197 +10:00 [Information] FindAsync Info: Id: 5cc658fc42ab10c1644ffc0b
+2019-09-13 15:00:52.197 +10:00 [Information] FindAsync Info: Id: 5cc69941e321d71a487d400d
+2019-09-13 15:00:52.198 +10:00 [Information] FindAsync Info: Id: 5cc6c8399e698ecf54a6ccd3
+2019-09-13 15:00:52.198 +10:00 [Information] FindAsync Info: Id: 5cc6e47aac28c94b606efdcb
+2019-09-13 15:00:52.199 +10:00 [Information] FindAsync Info: Id: 5cc6f0189e698ecf54a6ccd4
+2019-09-13 15:00:52.199 +10:00 [Information] FindAsync Info: Id: 5cc78c17b5b1a301741f077b
+2019-09-13 15:00:52.199 +10:00 [Information] FindAsync Info: Id: 5cc7c3daf7676e17e036c266
+2019-09-13 15:00:52.200 +10:00 [Information] FindAsync Info: Id: 5cc7cf86f6010708ecac967d
+2019-09-13 15:00:52.200 +10:00 [Information] FindAsync Info: Id: 5cc8113b03ddbb47b4f72b87
+2019-09-13 15:00:52.200 +10:00 [Information] FindAsync Info: Id: 5cc8d4437756e7102c567318
+2019-09-13 15:00:52.201 +10:00 [Information] FindAsync Info: Id: 5cc92a8b363816024085dad3
+2019-09-13 15:00:52.201 +10:00 [Information] FindAsync Info: Id: 5cc96e3bce8c032e740fc7a0
+2019-09-13 15:00:52.202 +10:00 [Information] FindAsync Info: Id: 5ccfa910eb47083424020ac5
+2019-09-13 15:00:52.202 +10:00 [Information] FindAsync Info: Id: 5cd0bb300defa14374f14cc4
+2019-09-13 15:00:52.202 +10:00 [Information] FindAsync Info: Id: 5cd105f87bfa8c350cd9844f
+2019-09-13 15:00:52.203 +10:00 [Information] FindAsync Info: Id: 5cd23e8d6e5cf6399c98ab27
+2019-09-13 15:00:52.203 +10:00 [Information] FindAsync Info: Id: 5cd354fdc6d15611a43100f6
+2019-09-13 15:00:52.204 +10:00 [Information] FindAsync Info: Id: 5cd8ac0cf6c3eb186470d820
+2019-09-13 15:00:52.204 +10:00 [Information] FindAsync Info: Id: 5cd9687685983d0d94ddc119
+2019-09-13 15:00:52.204 +10:00 [Information] FindAsync Info: Id: 5cd9dd9b6f12aa2e0044a8e1
+2019-09-13 15:00:52.205 +10:00 [Information] FindAsync Info: Id: 5cd9e32d73bc0f3c7845f450
+2019-09-13 15:00:52.205 +10:00 [Information] FindAsync Info: Id: 5cdb6d36ad7eb928d421c4ea
+2019-09-13 15:00:52.206 +10:00 [Information] FindAsync Info: Id: 5cdb71d198c35882b4a863e2
+2019-09-13 15:00:52.206 +10:00 [Information] FindAsync Info: Id: 5cdd0a0fc916315494659a76
+2019-09-13 15:00:52.207 +10:00 [Information] FindAsync Info: Id: 5cdde4bbf5e8f20e037c3389
+2019-09-13 15:00:52.207 +10:00 [Information] FindAsync Info: Id: 5ce33e991e26b30006207103
+2019-09-13 15:00:52.207 +10:00 [Information] FindAsync Info: Id: 5ce3442885363c3c71bc9aa6
+2019-09-13 15:00:52.208 +10:00 [Information] FindAsync Info: Id: 5ce345b86b616a40db5b9409
+2019-09-13 15:00:52.208 +10:00 [Information] FindAsync Info: Id: 5ce3478833161c45f9d72583
+2019-09-13 15:00:52.208 +10:00 [Information] FindAsync Info: Id: 5ce347b333161c45f9d72584
+2019-09-13 15:00:52.209 +10:00 [Information] FindAsync Info: Id: 5ce35a03e0bfdc5c04804e50
+2019-09-13 15:00:52.209 +10:00 [Information] FindAsync Info: Id: 5ce35bf18b2b572e101f6ebb
+2019-09-13 15:00:52.209 +10:00 [Information] FindAsync Info: Id: 5ce360a3e0bfdc5c04804e51
+2019-09-13 15:00:52.210 +10:00 [Information] FindAsync Info: Id: 5ce4a38cddd0344bd493de0e
+2019-09-13 15:00:52.210 +10:00 [Information] FindAsync Info: Id: 5ce4a6202a79d92d104dab68
+2019-09-13 15:00:52.210 +10:00 [Information] FindAsync Info: Id: 5ce64a24cb51ad00064b2beb
+2019-09-13 15:00:52.210 +10:00 [Information] FindAsync Info: Id: 5ce64ff8cb51ad00064b2bec
+2019-09-13 15:00:52.211 +10:00 [Information] FindAsync Info: Id: 5ce6534ccb51ad00064b2bed
+2019-09-13 15:00:52.211 +10:00 [Information] FindAsync Info: Id: 5ce714913b0ceb4130085c07
+2019-09-13 15:00:52.211 +10:00 [Information] FindAsync Info: Id: 5ce94df6845ec048c4f12141
+2019-09-13 15:00:52.212 +10:00 [Information] FindAsync Info: Id: 5ceb3d775e32c6a2bc2ff2da
+2019-09-13 15:00:52.212 +10:00 [Information] FindAsync Info: Id: 5ceb3e9ae7fcc114d0926706
+2019-09-13 15:00:52.215 +10:00 [Information] FindAsync Info: Id: 5ceb4cf0a23b3808d47c3f7f
+2019-09-13 15:00:52.215 +10:00 [Information] FindAsync Info: Id: 5ceb85a9539adc2b8827a1c8
+2019-09-13 15:00:52.216 +10:00 [Information] FindAsync Info: Id: 5cec593fe4bb5a2ccc54931a
+2019-09-13 15:00:52.216 +10:00 [Information] FindAsync Info: Id: 5ceca50400f3470d48b1abf3
+2019-09-13 15:00:52.216 +10:00 [Information] FindAsync Info: Id: 5cecb1a900f3470d48b1abf4
+2019-09-13 15:00:52.217 +10:00 [Information] FindAsync Info: Id: 5cedb63fe884095cc8cfb969
+2019-09-13 15:00:52.217 +10:00 [Information] FindAsync Info: Id: 5cedca0bfdb1ca5140d3a575
+2019-09-13 15:00:52.218 +10:00 [Information] FindAsync Info: Id: 5cee313000f3470d48b1abf5
+2019-09-13 15:00:52.218 +10:00 [Information] FindAsync Info: Id: 5cef0c50aab31f5ae832e110
+2019-09-13 15:00:52.219 +10:00 [Information] FindAsync Info: Id: 5cf0b3ec370d7a1dd032fd92
+2019-09-13 15:00:52.219 +10:00 [Information] FindAsync Info: Id: 5cf5e42be0d7741fd4aac243
+2019-09-13 15:00:52.219 +10:00 [Information] FindAsync Info: Id: 5cf73831fa1cff0ed8c747a5
+2019-09-13 15:00:52.220 +10:00 [Information] FindAsync Info: Id: 5cf775435a12ac26e0b6db91
+2019-09-13 15:00:52.220 +10:00 [Information] FindAsync Info: Id: 5cfb29e01e138936cc2abc38
+2019-09-13 15:00:52.221 +10:00 [Information] FindAsync Info: Id: 5cfefa0123b59f06c0d76020
+2019-09-13 15:00:52.221 +10:00 [Information] FindAsync Info: Id: 5d0201bc738b08568478dc63
+2019-09-13 15:00:52.221 +10:00 [Information] FindAsync Info: Id: 5d02e44847d7a40898594651
+2019-09-13 15:00:52.222 +10:00 [Information] FindAsync Info: Id: 5d037ffd5a2c1d57e0b41034
+2019-09-13 15:00:52.222 +10:00 [Information] FindAsync Info: Id: 5d06df076875f95254427dff
+2019-09-13 15:00:52.223 +10:00 [Information] FindAsync Info: Id: 5d06eda88283ef41406bbe75
+2019-09-13 15:00:52.223 +10:00 [Information] FindAsync Info: Id: 5d06f3518f9e2b0940284036
+2019-09-13 15:00:52.224 +10:00 [Information] FindAsync Info: Id: 5d0784fa024e322a08c6dfb0
+2019-09-13 15:00:52.224 +10:00 [Information] FindAsync Info: Id: 5d098726b11c9613643ff45b
+2019-09-13 15:00:52.224 +10:00 [Information] FindAsync Info: Id: 5d0ac4083448a343a009c57e
+2019-09-13 15:00:52.225 +10:00 [Information] FindAsync Info: Id: 5d0aea301e1cdb263810660b
+2019-09-13 15:00:52.225 +10:00 [Information] FindAsync Info: Id: 5d0aea691e1cdb263810660c
+2019-09-13 15:00:52.232 +10:00 [Information] FindAsync Info: Id: 5d0af04ba0d1524ac89605f8
+2019-09-13 15:00:52.233 +10:00 [Information] FindAsync Info: Id: 5d0b3f5f12a3453ae871ea41
+2019-09-13 15:00:52.233 +10:00 [Information] FindAsync Info: Id: 5d0bf9b539ef4b4580d113f3
+2019-09-13 15:00:52.234 +10:00 [Information] FindAsync Info: Id: 5d0ec5d91aebd7176c4e612d
+2019-09-13 15:00:52.234 +10:00 [Information] FindAsync Info: Id: 5d0f37411aebd7176c4e612e
+2019-09-13 15:00:52.235 +10:00 [Information] FindAsync Info: Id: 5d0f3e261aebd7176c4e612f
+2019-09-13 15:00:52.235 +10:00 [Information] FindAsync Info: Id: 5d0f503f1aebd7176c4e6130
+2019-09-13 15:00:52.235 +10:00 [Information] FindAsync Info: Id: 5d0f51871aebd7176c4e6131
+2019-09-13 15:00:52.236 +10:00 [Information] FindAsync Info: Id: 5d0f53161aebd7176c4e6132
+2019-09-13 15:00:52.236 +10:00 [Information] FindAsync Info: Id: 5d101fffdefe5f4a7ca288cf
+2019-09-13 15:00:52.237 +10:00 [Information] FindAsync Info: Id: 5d10248e1aebd7176c4e6133
+2019-09-13 15:00:52.237 +10:00 [Information] FindAsync Info: Id: 5d116d446ad8cb1070221760
+2019-09-13 15:00:52.238 +10:00 [Information] FindAsync Info: Id: 5d118bf1081f1029d8ecf67f
+2019-09-13 15:00:52.238 +10:00 [Information] FindAsync Info: Id: 5d18108f44124f389cbfd0f6
+2019-09-13 15:00:52.238 +10:00 [Information] FindAsync Info: Id: 5d195ba6cac3654eac0adb3a
+2019-09-13 15:00:52.239 +10:00 [Information] FindAsync Info: Id: 5d1b03b6f4e24742a06785f3
+2019-09-13 15:00:52.239 +10:00 [Information] FindAsync Info: Id: 5d1beddb4a3b7f2a380d419b
+2019-09-13 15:00:52.240 +10:00 [Information] FindAsync Info: Id: 5d1d75ee21563010747e2fd5
+2019-09-13 15:00:52.240 +10:00 [Information] FindAsync Info: Id: 5d209e5d3384bc4038d28c54
+2019-09-13 15:00:52.241 +10:00 [Information] FindAsync Info: Id: 5d229ca7d4a1b422bc8d2e15
+2019-09-13 15:00:52.241 +10:00 [Information] FindAsync Info: Id: 5d22ad7ca7a37c36c45aab2d
+2019-09-13 15:00:52.241 +10:00 [Information] FindAsync Info: Id: 5d22be1686f75500064a865c
+2019-09-13 15:00:52.242 +10:00 [Information] FindAsync Info: Id: 5d255cc0b3396b1b305bdb31
+2019-09-13 15:00:52.242 +10:00 [Information] FindAsync Info: Id: 5d28147fcce8020ef80057a1
+2019-09-13 15:00:52.243 +10:00 [Information] FindAsync Info: Id: 5d28b00063b535529497720f
+2019-09-13 15:00:52.243 +10:00 [Information] FindAsync Info: Id: 5d297b76abc6154a7cce8406
+2019-09-13 15:00:52.250 +10:00 [Information] FindAsync Info: Id: 5d29a37aa85fa53fdc8a52f1
+2019-09-13 15:00:52.251 +10:00 [Error] FindAsync Error: An error occurred while deserializing the JobSeekingStatus property of class Talent.Common.Models.User: Expected a nested document representing the serialized form of a Talent.Common.Models.JobSeekingStatus value, but found a value of type String instead.
+2019-09-13 15:00:52.252 +10:00 [Information] FindAsync Info: Id: 5d2bfa08a9332e4fc832f8aa
+2019-09-13 15:00:52.252 +10:00 [Information] FindAsync Info: Id: 5d2ca2b9f9a6181b80849e54
+2019-09-13 15:00:52.253 +10:00 [Information] FindAsync Info: Id: 5d2ced935d00e623c8bbf9e1
+2019-09-13 15:00:52.253 +10:00 [Information] FindAsync Info: Id: 5d2d26f26de4df5890ce0d2f
+2019-09-13 15:00:52.254 +10:00 [Information] FindAsync Info: Id: 5d2d5c29025c623ddc5ffb7e
+2019-09-13 15:00:52.254 +10:00 [Information] FindAsync Info: Id: 5d2e5ea469dc22191c7b2858
+2019-09-13 15:00:52.255 +10:00 [Information] FindAsync Info: Id: 5d2e7201615bb033a812599d
+2019-09-13 15:00:52.255 +10:00 [Information] FindAsync Info: Id: 5d2f24eaac78ea602ce38cbc
+2019-09-13 15:00:52.256 +10:00 [Information] FindAsync Info: Id: 5d2fdfe56de4df5890ce0d30
+2019-09-13 15:00:52.257 +10:00 [Information] FindAsync Info: Id: 5d2fe1b76de4df5890ce0d31
+2019-09-13 15:00:52.258 +10:00 [Information] FindAsync Info: Id: 5d2fe48d0b216946c057d773
+2019-09-13 15:00:52.258 +10:00 [Information] FindAsync Info: Id: 5d2fe4f70b216946c057d774
+2019-09-13 15:00:52.259 +10:00 [Information] FindAsync Info: Id: 5d3fabdb31970298f89a5061
+2019-09-13 15:00:52.259 +10:00 [Information] FindAsync Info: Id: 5d3fc4117b8e129384fbc3b3
+2019-09-13 15:00:52.260 +10:00 [Information] FindAsync Info: Id: 5d48fd3ca2c58564106fbc13
+2019-09-13 15:00:52.260 +10:00 [Information] FindAsync Info: Id: 5d4b57c4a064fb858c19b344
+2019-09-13 15:00:52.261 +10:00 [Information] FindAsync Info: Id: 5d54e20826822cc46cea6440
+2019-09-13 15:00:52.261 +10:00 [Information] FindAsync Info: Id: 5d55203e40ab02499c8c6009
+2019-09-13 15:00:52.262 +10:00 [Information] FindAsync Info: Id: 5d5a05da56e60a5b04be20ec
+2019-09-13 15:00:52.263 +10:00 [Information] FindAsync Info: Id: 5d5a06db56e60a5b04be20ed
+2019-09-13 15:00:52.263 +10:00 [Information] FindAsync Info: Id: 5d5b2cc00e68182c6c89cacb
+2019-09-13 15:00:52.264 +10:00 [Information] FindAsync Info: Id: 5d5b32c10e68182c6c89cacc
+2019-09-13 15:00:52.270 +10:00 [Information] FindAsync Info: Id: 5d5b5486416d171d9c540522
+2019-09-13 15:00:52.271 +10:00 [Information] FindAsync Info: Id: 5d5b6e938e1b935054f4bb71
+2019-09-13 15:00:52.271 +10:00 [Information] FindAsync Info: Id: 5d5e43787aff8213b4c7396c
+2019-09-13 15:00:52.272 +10:00 [Information] FindAsync Info: Id: 5d5f3f23251e03335c5bcccf
+2019-09-13 15:00:52.272 +10:00 [Information] FindAsync Info: Id: 5d5f426e251e03335c5bccd0
+2019-09-13 15:00:52.273 +10:00 [Information] FindAsync Info: Id: 5d5f44fa251e03335c5bccd1
+2019-09-13 15:00:52.273 +10:00 [Information] FindAsync Info: Id: 5d6333b9005b97443095fabe
+2019-09-13 15:00:52.274 +10:00 [Information] FindAsync Info: Id: 5d6333f8005b97443095fabf
+2019-09-13 15:00:52.275 +10:00 [Information] FindAsync Info: Id: 5d633889dc377fb14482a58e
+2019-09-13 15:00:52.275 +10:00 [Information] FindAsync Info: Id: 5d6338b9dc377fb14482a58f
+2019-09-13 15:00:52.276 +10:00 [Information] FindAsync Info: Id: 5d633f12e6501840dc2430a0
+2019-09-13 15:00:52.276 +10:00 [Information] FindAsync Info: Id: 5d638ddbcdc7db37e8b5abe9
+2019-09-13 15:00:52.277 +10:00 [Information] FindAsync Info: Id: 5d646c9b8d026124589d5772
+2019-09-13 15:00:52.277 +10:00 [Information] FindAsync Info: Id: 5d64b421839d056964d799b2
+2019-09-13 15:00:52.278 +10:00 [Information] FindAsync Info: Id: 5d64d5d8e0c3c5251c0de25f
+2019-09-13 15:00:52.278 +10:00 [Information] FindAsync Info: Id: 5d64daa8e468813128d1d0e7
+2019-09-13 15:00:52.279 +10:00 [Information] FindAsync Info: Id: 5d64f0706adcf95e60d17110
+2019-09-13 15:00:52.280 +10:00 [Information] FindAsync Info: Id: 5d65ba0d9671ee17b08a0bbb
+2019-09-13 15:00:52.280 +10:00 [Information] FindAsync Info: Id: 5d65eaffda4d8e281044de4c
+2019-09-13 15:00:52.281 +10:00 [Information] FindAsync Info: Id: 5d667a6823826242f438201e
+2019-09-13 15:00:52.282 +10:00 [Information] FindAsync Info: Id: 5d671f368c68ff3074de5054
+2019-09-13 15:00:52.282 +10:00 [Information] FindAsync Info: Id: 5d67278af54edd7180c5b2d1
+2019-09-13 15:00:52.283 +10:00 [Information] FindAsync Info: Id: 5d6b47f517e1d237ac8b444e
+2019-09-13 15:00:52.283 +10:00 [Information] FindAsync Info: Id: 5d6cf1b0579525447c5af3f3
+2019-09-13 15:00:52.284 +10:00 [Information] FindAsync Info: Id: 5d6ed6554482fc2e78961336
+2019-09-13 15:00:52.284 +10:00 [Information] FindAsync Info: Id: 5d6f32aa8307ab698ce64358
+2019-09-13 15:00:52.289 +10:00 [Information] FindAsync Info: Id: 5d6f97a4f7ceb621b44b0823
+2019-09-13 15:00:52.289 +10:00 [Information] FindAsync Info: Id: 5d70c9766ae77b3eb831fbe1
+2019-09-13 15:00:52.290 +10:00 [Information] FindAsync Info: Id: 5d71a45504ed111980712115
+2019-09-13 15:00:52.291 +10:00 [Information] FindAsync Info: Id: 5d724be2a2adec480c269264
+2019-09-13 15:00:52.291 +10:00 [Information] FindAsync Info: Id: 5d732a092c0e1b263441690f
+2019-09-13 15:00:52.292 +10:00 [Information] FindAsync Info: Id: 5d74a9176518c432e897b808
+2019-09-13 15:00:52.292 +10:00 [Information] FindAsync Info: Id: 5d761d921da39521c0f7073f
+2019-09-13 15:00:52.293 +10:00 [Information] FindAsync Info: Id: 5d77026e4f287322809cc5a0
+2019-09-13 15:00:52.293 +10:00 [Information] FindAsync Info: Id: 5d772006b36d9821e85bafc8
+2019-09-13 15:00:52.293 +10:00 [Information] FindAsync Info: Id: 5d773cf5b36d9821e85bafc9
+2019-09-13 15:00:52.294 +10:00 [Information] FindAsync Info: Id: 5d774818b36d9821e85bafca
+2019-09-13 15:00:52.294 +10:00 [Information] FindAsync Info: Id: 5d78276fb286220a4040de36
+2019-09-13 15:00:52.295 +10:00 [Information] FindAsync Info: Id: 5d7ab1fe9fc36740509bd5c7
+2019-09-13 15:00:52.322 +10:00 [Information] result count is 5
+2019-09-13 15:00:52.353 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 15:00:52.436 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 2090.9173ms
+2019-09-13 15:00:52.448 +10:00 [Information] Request finished in 2505.0925ms 200 application/json; charset=utf-8
+2019-09-13 15:03:59.883 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=0&number=5  
+2019-09-13 15:03:59.883 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 15:03:59.883 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 15:03:59.883 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-13 15:03:59.975 +10:00 [Information] Policy execution successful.
+2019-09-13 15:03:59.975 +10:00 [Information] Policy execution successful.
+2019-09-13 15:03:59.975 +10:00 [Information] Policy execution successful.
+2019-09-13 15:03:59.975 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:00.039 +10:00 [Information] Request finished in 202.4779ms 204 
+2019-09-13 15:04:00.039 +10:00 [Information] Request finished in 202.4537ms 204 
+2019-09-13 15:04:00.039 +10:00 [Information] Request finished in 202.4867ms 204 
+2019-09-13 15:04:00.039 +10:00 [Information] Request finished in 202.5393ms 204 
+2019-09-13 15:04:00.139 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-13 15:04:00.145 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 15:04:00.146 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:00.146 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:00.146 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=0&number=5  
+2019-09-13 15:04:00.146 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:00.293 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 15:04:00.293 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:00.785 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:00.785 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:00.785 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:00.785 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:00.795 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:00.795 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:00.795 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:00.795 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:00.816 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:00.816 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:00.816 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:00.816 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:01.489 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 15:04:01.489 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 15:04:01.515 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" with arguments (["", ""]) - ModelState is Valid
+2019-09-13 15:04:01.555 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 15:04:02.062 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, employer = Talent.Services.Profile.Models.Profile.EmployerProfileViewModel }".
+2019-09-13 15:04:02.062 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 15:04:02.062 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 15:04:02.123 +10:00 [Information] FindAsync Info: Id: 5c61ee7b7eafa7389c4cdd51
+2019-09-13 15:04:02.124 +10:00 [Information] FindAsync Info: Id: 5c6b49176877e95384309f81
+2019-09-13 15:04:02.140 +10:00 [Information] FindAsync Info: Id: 5c6cb5a98c85090c88fb0bc8
+2019-09-13 15:04:02.144 +10:00 [Information] FindAsync Info: Id: 5c7323046fd0643d50f17e75
+2019-09-13 15:04:02.145 +10:00 [Information] FindAsync Info: Id: 5c73466152958b1cc00ee1b3
+2019-09-13 15:04:02.146 +10:00 [Information] FindAsync Info: Id: 5c73526f1e00f43cfc303193
+2019-09-13 15:04:02.147 +10:00 [Information] FindAsync Info: Id: 5c736468b484dd1e4c96a8d6
+2019-09-13 15:04:02.148 +10:00 [Information] FindAsync Info: Id: 5c75bd1c249c2a3b447c4f6d
+2019-09-13 15:04:02.153 +10:00 [Information] FindAsync Info: Id: 5c76f500796ecf2db4b60513
+2019-09-13 15:04:02.153 +10:00 [Information] FindAsync Info: Id: 5c76f5c7796ecf2db4b60514
+2019-09-13 15:04:02.156 +10:00 [Information] FindAsync Info: Id: 5c7745bfe1e2c281349e6f92
+2019-09-13 15:04:02.156 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" in 1617.6222ms
+2019-09-13 15:04:02.157 +10:00 [Information] FindAsync Info: Id: 5c7a16883d0772387c62e20a
+2019-09-13 15:04:02.157 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 1617.7235ms
+2019-09-13 15:04:02.156 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 1617.5753ms
+2019-09-13 15:04:02.158 +10:00 [Information] FindAsync Info: Id: 5c7e527f1781aa2b2882e5dc
+2019-09-13 15:04:02.159 +10:00 [Information] FindAsync Info: Id: 5c7f22f767f7ee016caff84c
+2019-09-13 15:04:02.160 +10:00 [Information] Request finished in 2021.045ms 200 application/json; charset=utf-8
+2019-09-13 15:04:02.160 +10:00 [Information] Request finished in 1867.1523ms 200 application/json; charset=utf-8
+2019-09-13 15:04:02.160 +10:00 [Information] Request finished in 2014.101ms 200 application/json; charset=utf-8
+2019-09-13 15:04:02.160 +10:00 [Information] FindAsync Info: Id: 5c7f236caad5e95974f4486c
+2019-09-13 15:04:02.161 +10:00 [Information] FindAsync Info: Id: 5c7f6de13edb8721748cfe83
+2019-09-13 15:04:02.162 +10:00 [Information] FindAsync Info: Id: 5c80418fc9cc002a6ced9c5e
+2019-09-13 15:04:02.162 +10:00 [Information] FindAsync Info: Id: 5c805a6b0abb6a2254d80bf1
+2019-09-13 15:04:02.164 +10:00 [Information] FindAsync Info: Id: 5c84f9453fab4b2d28a5cf0c
+2019-09-13 15:04:02.165 +10:00 [Information] FindAsync Info: Id: 5c887072e4af3a2f780dce42
+2019-09-13 15:04:02.166 +10:00 [Information] FindAsync Info: Id: 5c887332c722ec0bd45704c3
+2019-09-13 15:04:02.199 +10:00 [Information] FindAsync Info: Id: 5c90178ce07653102c8dd240
+2019-09-13 15:04:02.200 +10:00 [Information] FindAsync Info: Id: 5c904d6a7215da49243a8b25
+2019-09-13 15:04:02.201 +10:00 [Information] FindAsync Info: Id: 5c9053ba0d188f9aa02ae1ad
+2019-09-13 15:04:02.202 +10:00 [Information] FindAsync Info: Id: 5c9056f035ec5e1304765769
+2019-09-13 15:04:02.203 +10:00 [Information] FindAsync Info: Id: 5c92cddba5ff9233983aaa39
+2019-09-13 15:04:02.204 +10:00 [Information] FindAsync Info: Id: 5c92f67cdf09ad2d48d17c29
+2019-09-13 15:04:02.212 +10:00 [Information] FindAsync Info: Id: 5c9c8d70e6153f0006a3d43c
+2019-09-13 15:04:02.213 +10:00 [Information] FindAsync Info: Id: 5ca171b984488a55c0c6801e
+2019-09-13 15:04:02.213 +10:00 [Information] FindAsync Info: Id: 5ca172eb84488a55c0c6801f
+2019-09-13 15:04:02.214 +10:00 [Information] FindAsync Info: Id: 5ca286f3d5aca2448c5ed80e
+2019-09-13 15:04:02.215 +10:00 [Information] FindAsync Info: Id: 5ca2a3bfbb5b380006453a14
+2019-09-13 15:04:02.217 +10:00 [Information] FindAsync Info: Id: 5ca3deeeb4c1db02f0cefcb6
+2019-09-13 15:04:02.217 +10:00 [Information] FindAsync Info: Id: 5ca3e02ab4c1db02f0cefcb7
+2019-09-13 15:04:02.220 +10:00 [Information] FindAsync Info: Id: 5ca5a9b1378f480006ba18e7
+2019-09-13 15:04:02.221 +10:00 [Information] FindAsync Info: Id: 5ca6f77447280306c0212e17
+2019-09-13 15:04:02.222 +10:00 [Information] FindAsync Info: Id: 5caae7506b893639e4cf4a59
+2019-09-13 15:04:02.223 +10:00 [Information] FindAsync Info: Id: 5cabcd3efbc6b908d0557879
+2019-09-13 15:04:02.231 +10:00 [Information] FindAsync Info: Id: 5cabd5dea3cb6d0006b96ce9
+2019-09-13 15:04:02.235 +10:00 [Information] FindAsync Info: Id: 5cad1f7fcf6f7806ac2eaee6
+2019-09-13 15:04:02.236 +10:00 [Information] FindAsync Info: Id: 5cad363aaea05938b8c7ccf3
+2019-09-13 15:04:02.238 +10:00 [Information] FindAsync Info: Id: 5cad54fbcf6f7806ac2eaeeb
+2019-09-13 15:04:02.238 +10:00 [Information] FindAsync Info: Id: 5cad5527e1f53400065bd4a0
+2019-09-13 15:04:02.239 +10:00 [Information] FindAsync Info: Id: 5cad7479aa3b72036cce736e
+2019-09-13 15:04:02.243 +10:00 [Information] FindAsync Info: Id: 5cae7629b107412cbc66f608
+2019-09-13 15:04:02.245 +10:00 [Information] FindAsync Info: Id: 5cb1d1f1cc904761d0ebd0dd
+2019-09-13 15:04:02.247 +10:00 [Information] FindAsync Info: Id: 5cb1dfe6a32dd64e008b9bc0
+2019-09-13 15:04:02.248 +10:00 [Information] FindAsync Info: Id: 5cb30c13a81b795110c37c67
+2019-09-13 15:04:02.255 +10:00 [Information] FindAsync Info: Id: 5cba501507606c5958665130
+2019-09-13 15:04:02.264 +10:00 [Information] FindAsync Info: Id: 5cc02c30fa13e92f44a511e5
+2019-09-13 15:04:02.496 +10:00 [Information] FindAsync Info: Id: 5cc0cee72033a700e403d0a8
+2019-09-13 15:04:02.497 +10:00 [Information] FindAsync Info: Id: 5cc13c63ddde7339b8090ef9
+2019-09-13 15:04:02.499 +10:00 [Information] FindAsync Info: Id: 5cc3f649355f9f3d6c24497b
+2019-09-13 15:04:02.499 +10:00 [Information] FindAsync Info: Id: 5cc4864d6562213510db624c
+2019-09-13 15:04:02.500 +10:00 [Information] FindAsync Info: Id: 5cc5363530041e45285abb6a
+2019-09-13 15:04:02.501 +10:00 [Information] FindAsync Info: Id: 5cc63df97439f31e8063b18d
+2019-09-13 15:04:02.502 +10:00 [Information] FindAsync Info: Id: 5cc658fc42ab10c1644ffc0b
+2019-09-13 15:04:02.502 +10:00 [Information] FindAsync Info: Id: 5cc69941e321d71a487d400d
+2019-09-13 15:04:02.503 +10:00 [Information] FindAsync Info: Id: 5cc6c8399e698ecf54a6ccd3
+2019-09-13 15:04:02.503 +10:00 [Information] FindAsync Info: Id: 5cc6e47aac28c94b606efdcb
+2019-09-13 15:04:02.504 +10:00 [Information] FindAsync Info: Id: 5cc78c17b5b1a301741f077b
+2019-09-13 15:04:02.505 +10:00 [Information] FindAsync Info: Id: 5cc8113b03ddbb47b4f72b87
+2019-09-13 15:04:02.507 +10:00 [Information] FindAsync Info: Id: 5cc96e3bce8c032e740fc7a0
+2019-09-13 15:04:02.507 +10:00 [Information] FindAsync Info: Id: 5ccfa910eb47083424020ac5
+2019-09-13 15:04:02.508 +10:00 [Information] FindAsync Info: Id: 5cd0bb300defa14374f14cc4
+2019-09-13 15:04:02.509 +10:00 [Information] FindAsync Info: Id: 5cd23e8d6e5cf6399c98ab27
+2019-09-13 15:04:02.524 +10:00 [Information] FindAsync Info: Id: 5cd9687685983d0d94ddc119
+2019-09-13 15:04:02.526 +10:00 [Information] FindAsync Info: Id: 5cdb6d36ad7eb928d421c4ea
+2019-09-13 15:04:02.526 +10:00 [Information] FindAsync Info: Id: 5cdb71d198c35882b4a863e2
+2019-09-13 15:04:02.527 +10:00 [Information] FindAsync Info: Id: 5cdd0a0fc916315494659a76
+2019-09-13 15:04:02.528 +10:00 [Information] FindAsync Info: Id: 5ce35a03e0bfdc5c04804e50
+2019-09-13 15:04:02.529 +10:00 [Information] FindAsync Info: Id: 5ce35bf18b2b572e101f6ebb
+2019-09-13 15:04:02.529 +10:00 [Information] FindAsync Info: Id: 5ce360a3e0bfdc5c04804e51
+2019-09-13 15:04:02.530 +10:00 [Information] FindAsync Info: Id: 5ce4a6202a79d92d104dab68
+2019-09-13 15:04:02.531 +10:00 [Information] FindAsync Info: Id: 5ce714913b0ceb4130085c07
+2019-09-13 15:04:02.532 +10:00 [Information] FindAsync Info: Id: 5ce94df6845ec048c4f12141
+2019-09-13 15:04:02.532 +10:00 [Information] FindAsync Info: Id: 5ceb3d775e32c6a2bc2ff2da
+2019-09-13 15:04:02.534 +10:00 [Information] FindAsync Info: Id: 5ceb85a9539adc2b8827a1c8
+2019-09-13 15:04:02.534 +10:00 [Information] FindAsync Info: Id: 5cec593fe4bb5a2ccc54931a
+2019-09-13 15:04:02.535 +10:00 [Information] FindAsync Info: Id: 5cedb63fe884095cc8cfb969
+2019-09-13 15:04:02.536 +10:00 [Information] FindAsync Info: Id: 5cee313000f3470d48b1abf5
+2019-09-13 15:04:02.536 +10:00 [Information] FindAsync Info: Id: 5cef0c50aab31f5ae832e110
+2019-09-13 15:04:02.537 +10:00 [Information] FindAsync Info: Id: 5cf5e42be0d7741fd4aac243
+2019-09-13 15:04:02.538 +10:00 [Information] FindAsync Info: Id: 5cf73831fa1cff0ed8c747a5
+2019-09-13 15:04:02.538 +10:00 [Information] FindAsync Info: Id: 5cf775435a12ac26e0b6db91
+2019-09-13 15:04:02.539 +10:00 [Information] FindAsync Info: Id: 5cfefa0123b59f06c0d76020
+2019-09-13 15:04:02.542 +10:00 [Information] FindAsync Info: Id: 5d0784fa024e322a08c6dfb0
+2019-09-13 15:04:02.542 +10:00 [Information] FindAsync Info: Id: 5d098726b11c9613643ff45b
+2019-09-13 15:04:02.544 +10:00 [Information] FindAsync Info: Id: 5d0b3f5f12a3453ae871ea41
+2019-09-13 15:04:02.544 +10:00 [Information] FindAsync Info: Id: 5d0bf9b539ef4b4580d113f3
+2019-09-13 15:04:02.545 +10:00 [Information] FindAsync Info: Id: 5d0f37411aebd7176c4e612e
+2019-09-13 15:04:02.545 +10:00 [Information] FindAsync Info: Id: 5d0f3e261aebd7176c4e612f
+2019-09-13 15:04:02.546 +10:00 [Information] FindAsync Info: Id: 5d0f503f1aebd7176c4e6130
+2019-09-13 15:04:02.546 +10:00 [Information] FindAsync Info: Id: 5d0f51871aebd7176c4e6131
+2019-09-13 15:04:02.547 +10:00 [Information] FindAsync Info: Id: 5d0f53161aebd7176c4e6132
+2019-09-13 15:04:02.547 +10:00 [Information] FindAsync Info: Id: 5d101fffdefe5f4a7ca288cf
+2019-09-13 15:04:02.548 +10:00 [Information] FindAsync Info: Id: 5d10248e1aebd7176c4e6133
+2019-09-13 15:04:02.549 +10:00 [Information] FindAsync Info: Id: 5d118bf1081f1029d8ecf67f
+2019-09-13 15:04:02.549 +10:00 [Information] FindAsync Info: Id: 5d18108f44124f389cbfd0f6
+2019-09-13 15:04:02.550 +10:00 [Information] FindAsync Info: Id: 5d195ba6cac3654eac0adb3a
+2019-09-13 15:04:02.550 +10:00 [Information] FindAsync Info: Id: 5d1b03b6f4e24742a06785f3
+2019-09-13 15:04:02.551 +10:00 [Information] FindAsync Info: Id: 5d1beddb4a3b7f2a380d419b
+2019-09-13 15:04:02.551 +10:00 [Information] FindAsync Info: Id: 5d1d75ee21563010747e2fd5
+2019-09-13 15:04:02.552 +10:00 [Information] FindAsync Info: Id: 5d209e5d3384bc4038d28c54
+2019-09-13 15:04:02.552 +10:00 [Information] FindAsync Info: Id: 5d229ca7d4a1b422bc8d2e15
+2019-09-13 15:04:02.553 +10:00 [Information] FindAsync Info: Id: 5d22be1686f75500064a865c
+2019-09-13 15:04:02.554 +10:00 [Information] FindAsync Info: Id: 5d28147fcce8020ef80057a1
+2019-09-13 15:04:02.557 +10:00 [Error] FindAsync Error: An error occurred while deserializing the JobSeekingStatus property of class Talent.Common.Models.User: Expected a nested document representing the serialized form of a Talent.Common.Models.JobSeekingStatus value, but found a value of type String instead.
+2019-09-13 15:04:02.558 +10:00 [Information] FindAsync Info: Id: 5d2ced935d00e623c8bbf9e1
+2019-09-13 15:04:02.559 +10:00 [Information] FindAsync Info: Id: 5d2d5c29025c623ddc5ffb7e
+2019-09-13 15:04:02.560 +10:00 [Information] FindAsync Info: Id: 5d2e5ea469dc22191c7b2858
+2019-09-13 15:04:02.560 +10:00 [Information] FindAsync Info: Id: 5d2e7201615bb033a812599d
+2019-09-13 15:04:02.561 +10:00 [Information] FindAsync Info: Id: 5d2f24eaac78ea602ce38cbc
+2019-09-13 15:04:02.562 +10:00 [Information] FindAsync Info: Id: 5d3fabdb31970298f89a5061
+2019-09-13 15:04:02.563 +10:00 [Information] FindAsync Info: Id: 5d3fc4117b8e129384fbc3b3
+2019-09-13 15:04:02.563 +10:00 [Information] FindAsync Info: Id: 5d48fd3ca2c58564106fbc13
+2019-09-13 15:04:02.565 +10:00 [Information] FindAsync Info: Id: 5d5a05da56e60a5b04be20ec
+2019-09-13 15:04:02.565 +10:00 [Information] FindAsync Info: Id: 5d5a06db56e60a5b04be20ed
+2019-09-13 15:04:02.567 +10:00 [Information] FindAsync Info: Id: 5d6333b9005b97443095fabe
+2019-09-13 15:04:02.568 +10:00 [Information] FindAsync Info: Id: 5d6333f8005b97443095fabf
+2019-09-13 15:04:02.568 +10:00 [Information] FindAsync Info: Id: 5d633889dc377fb14482a58e
+2019-09-13 15:04:02.569 +10:00 [Information] FindAsync Info: Id: 5d6338b9dc377fb14482a58f
+2019-09-13 15:04:02.570 +10:00 [Information] FindAsync Info: Id: 5d64d5d8e0c3c5251c0de25f
+2019-09-13 15:04:02.571 +10:00 [Information] FindAsync Info: Id: 5d64daa8e468813128d1d0e7
+2019-09-13 15:04:02.572 +10:00 [Information] FindAsync Info: Id: 5d65eaffda4d8e281044de4c
+2019-09-13 15:04:02.574 +10:00 [Information] FindAsync Info: Id: 5d671f368c68ff3074de5054
+2019-09-13 15:04:02.575 +10:00 [Information] FindAsync Info: Id: 5d6cf1b0579525447c5af3f3
+2019-09-13 15:04:02.576 +10:00 [Information] FindAsync Info: Id: 5d6ed6554482fc2e78961336
+2019-09-13 15:04:02.577 +10:00 [Information] FindAsync Info: Id: 5d70c9766ae77b3eb831fbe1
+2019-09-13 15:04:02.578 +10:00 [Information] FindAsync Info: Id: 5d724be2a2adec480c269264
+2019-09-13 15:04:02.578 +10:00 [Information] FindAsync Info: Id: 5d732a092c0e1b263441690f
+2019-09-13 15:04:02.579 +10:00 [Information] FindAsync Info: Id: 5d74a9176518c432e897b808
+2019-09-13 15:04:02.580 +10:00 [Information] FindAsync Info: Id: 5d761d921da39521c0f7073f
+2019-09-13 15:04:02.581 +10:00 [Information] FindAsync Info: Id: 5d77026e4f287322809cc5a0
+2019-09-13 15:04:02.582 +10:00 [Information] FindAsync Info: Id: 5d773cf5b36d9821e85bafc9
+2019-09-13 15:04:02.584 +10:00 [Information] FindAsync Info: Id: 5d7ab1fe9fc36740509bd5c7
+2019-09-13 15:04:02.593 +10:00 [Information] result count is 5
+2019-09-13 15:04:02.600 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 15:04:02.613 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 2062.267ms
+2019-09-13 15:04:02.618 +10:00 [Information] Request finished in 2471.5327ms 200 application/json; charset=utf-8
+2019-09-13 15:04:09.154 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=1&number=5  
+2019-09-13 15:04:09.154 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:09.155 +10:00 [Information] Request finished in 0.6063ms 204 
+2019-09-13 15:04:09.168 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=1&number=5  
+2019-09-13 15:04:09.168 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:09.182 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:09.184 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:09.184 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:09.186 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 15:04:09.327 +10:00 [Information] FindAsync Info: Id: 5c61ee7b7eafa7389c4cdd51
+2019-09-13 15:04:09.329 +10:00 [Information] FindAsync Info: Id: 5c6b49176877e95384309f81
+2019-09-13 15:04:09.330 +10:00 [Information] FindAsync Info: Id: 5c6cb5a98c85090c88fb0bc8
+2019-09-13 15:04:09.331 +10:00 [Information] FindAsync Info: Id: 5c7323046fd0643d50f17e75
+2019-09-13 15:04:09.332 +10:00 [Information] FindAsync Info: Id: 5c73466152958b1cc00ee1b3
+2019-09-13 15:04:09.333 +10:00 [Information] FindAsync Info: Id: 5c73526f1e00f43cfc303193
+2019-09-13 15:04:09.333 +10:00 [Information] FindAsync Info: Id: 5c736468b484dd1e4c96a8d6
+2019-09-13 15:04:09.334 +10:00 [Information] FindAsync Info: Id: 5c75bd1c249c2a3b447c4f6d
+2019-09-13 15:04:09.335 +10:00 [Information] FindAsync Info: Id: 5c76f500796ecf2db4b60513
+2019-09-13 15:04:09.335 +10:00 [Information] FindAsync Info: Id: 5c76f5c7796ecf2db4b60514
+2019-09-13 15:04:09.337 +10:00 [Information] FindAsync Info: Id: 5c7745bfe1e2c281349e6f92
+2019-09-13 15:04:09.337 +10:00 [Information] FindAsync Info: Id: 5c7a16883d0772387c62e20a
+2019-09-13 15:04:09.339 +10:00 [Information] FindAsync Info: Id: 5c7e527f1781aa2b2882e5dc
+2019-09-13 15:04:09.340 +10:00 [Information] FindAsync Info: Id: 5c7f22f767f7ee016caff84c
+2019-09-13 15:04:09.341 +10:00 [Information] FindAsync Info: Id: 5c7f236caad5e95974f4486c
+2019-09-13 15:04:09.342 +10:00 [Information] FindAsync Info: Id: 5c7f6de13edb8721748cfe83
+2019-09-13 15:04:09.342 +10:00 [Information] FindAsync Info: Id: 5c80418fc9cc002a6ced9c5e
+2019-09-13 15:04:09.343 +10:00 [Information] FindAsync Info: Id: 5c805a6b0abb6a2254d80bf1
+2019-09-13 15:04:09.345 +10:00 [Information] FindAsync Info: Id: 5c84f9453fab4b2d28a5cf0c
+2019-09-13 15:04:09.346 +10:00 [Information] FindAsync Info: Id: 5c887072e4af3a2f780dce42
+2019-09-13 15:04:09.347 +10:00 [Information] FindAsync Info: Id: 5c887332c722ec0bd45704c3
+2019-09-13 15:04:09.348 +10:00 [Information] FindAsync Info: Id: 5c90178ce07653102c8dd240
+2019-09-13 15:04:09.349 +10:00 [Information] FindAsync Info: Id: 5c904d6a7215da49243a8b25
+2019-09-13 15:04:09.349 +10:00 [Information] FindAsync Info: Id: 5c9053ba0d188f9aa02ae1ad
+2019-09-13 15:04:09.350 +10:00 [Information] FindAsync Info: Id: 5c9056f035ec5e1304765769
+2019-09-13 15:04:09.351 +10:00 [Information] FindAsync Info: Id: 5c92cddba5ff9233983aaa39
+2019-09-13 15:04:09.351 +10:00 [Information] FindAsync Info: Id: 5c92f67cdf09ad2d48d17c29
+2019-09-13 15:04:09.356 +10:00 [Information] FindAsync Info: Id: 5c9c8d70e6153f0006a3d43c
+2019-09-13 15:04:09.357 +10:00 [Information] FindAsync Info: Id: 5ca171b984488a55c0c6801e
+2019-09-13 15:04:09.358 +10:00 [Information] FindAsync Info: Id: 5ca172eb84488a55c0c6801f
+2019-09-13 15:04:09.358 +10:00 [Information] FindAsync Info: Id: 5ca286f3d5aca2448c5ed80e
+2019-09-13 15:04:09.359 +10:00 [Information] FindAsync Info: Id: 5ca2a3bfbb5b380006453a14
+2019-09-13 15:04:09.360 +10:00 [Information] FindAsync Info: Id: 5ca3deeeb4c1db02f0cefcb6
+2019-09-13 15:04:09.360 +10:00 [Information] FindAsync Info: Id: 5ca3e02ab4c1db02f0cefcb7
+2019-09-13 15:04:09.363 +10:00 [Information] FindAsync Info: Id: 5ca5a9b1378f480006ba18e7
+2019-09-13 15:04:09.364 +10:00 [Information] FindAsync Info: Id: 5ca6f77447280306c0212e17
+2019-09-13 15:04:09.365 +10:00 [Information] FindAsync Info: Id: 5caae7506b893639e4cf4a59
+2019-09-13 15:04:09.365 +10:00 [Information] FindAsync Info: Id: 5cabcd3efbc6b908d0557879
+2019-09-13 15:04:09.366 +10:00 [Information] FindAsync Info: Id: 5cabd5dea3cb6d0006b96ce9
+2019-09-13 15:04:09.368 +10:00 [Information] FindAsync Info: Id: 5cad1f7fcf6f7806ac2eaee6
+2019-09-13 15:04:09.369 +10:00 [Information] FindAsync Info: Id: 5cad363aaea05938b8c7ccf3
+2019-09-13 15:04:09.370 +10:00 [Information] FindAsync Info: Id: 5cad54fbcf6f7806ac2eaeeb
+2019-09-13 15:04:09.371 +10:00 [Information] FindAsync Info: Id: 5cad5527e1f53400065bd4a0
+2019-09-13 15:04:09.371 +10:00 [Information] FindAsync Info: Id: 5cad7479aa3b72036cce736e
+2019-09-13 15:04:09.374 +10:00 [Information] FindAsync Info: Id: 5cae7629b107412cbc66f608
+2019-09-13 15:04:09.376 +10:00 [Information] FindAsync Info: Id: 5cb1d1f1cc904761d0ebd0dd
+2019-09-13 15:04:09.377 +10:00 [Information] FindAsync Info: Id: 5cb1dfe6a32dd64e008b9bc0
+2019-09-13 15:04:09.378 +10:00 [Information] FindAsync Info: Id: 5cb30c13a81b795110c37c67
+2019-09-13 15:04:09.381 +10:00 [Information] FindAsync Info: Id: 5cba501507606c5958665130
+2019-09-13 15:04:09.383 +10:00 [Information] FindAsync Info: Id: 5cc02c30fa13e92f44a511e5
+2019-09-13 15:04:09.541 +10:00 [Information] FindAsync Info: Id: 5cc0cee72033a700e403d0a8
+2019-09-13 15:04:09.541 +10:00 [Information] FindAsync Info: Id: 5cc13c63ddde7339b8090ef9
+2019-09-13 15:04:09.543 +10:00 [Information] FindAsync Info: Id: 5cc3f649355f9f3d6c24497b
+2019-09-13 15:04:09.544 +10:00 [Information] FindAsync Info: Id: 5cc4864d6562213510db624c
+2019-09-13 15:04:09.544 +10:00 [Information] FindAsync Info: Id: 5cc5363530041e45285abb6a
+2019-09-13 15:04:09.545 +10:00 [Information] FindAsync Info: Id: 5cc63df97439f31e8063b18d
+2019-09-13 15:04:09.546 +10:00 [Information] FindAsync Info: Id: 5cc658fc42ab10c1644ffc0b
+2019-09-13 15:04:09.546 +10:00 [Information] FindAsync Info: Id: 5cc69941e321d71a487d400d
+2019-09-13 15:04:09.547 +10:00 [Information] FindAsync Info: Id: 5cc6c8399e698ecf54a6ccd3
+2019-09-13 15:04:09.547 +10:00 [Information] FindAsync Info: Id: 5cc6e47aac28c94b606efdcb
+2019-09-13 15:04:09.548 +10:00 [Information] FindAsync Info: Id: 5cc78c17b5b1a301741f077b
+2019-09-13 15:04:09.550 +10:00 [Information] FindAsync Info: Id: 5cc8113b03ddbb47b4f72b87
+2019-09-13 15:04:09.551 +10:00 [Information] FindAsync Info: Id: 5cc96e3bce8c032e740fc7a0
+2019-09-13 15:04:09.552 +10:00 [Information] FindAsync Info: Id: 5ccfa910eb47083424020ac5
+2019-09-13 15:04:09.552 +10:00 [Information] FindAsync Info: Id: 5cd0bb300defa14374f14cc4
+2019-09-13 15:04:09.553 +10:00 [Information] FindAsync Info: Id: 5cd23e8d6e5cf6399c98ab27
+2019-09-13 15:04:09.555 +10:00 [Information] FindAsync Info: Id: 5cd9687685983d0d94ddc119
+2019-09-13 15:04:09.556 +10:00 [Information] FindAsync Info: Id: 5cdb6d36ad7eb928d421c4ea
+2019-09-13 15:04:09.557 +10:00 [Information] FindAsync Info: Id: 5cdb71d198c35882b4a863e2
+2019-09-13 15:04:09.557 +10:00 [Information] FindAsync Info: Id: 5cdd0a0fc916315494659a76
+2019-09-13 15:04:09.559 +10:00 [Information] FindAsync Info: Id: 5ce35a03e0bfdc5c04804e50
+2019-09-13 15:04:09.560 +10:00 [Information] FindAsync Info: Id: 5ce35bf18b2b572e101f6ebb
+2019-09-13 15:04:09.560 +10:00 [Information] FindAsync Info: Id: 5ce360a3e0bfdc5c04804e51
+2019-09-13 15:04:09.561 +10:00 [Information] FindAsync Info: Id: 5ce4a6202a79d92d104dab68
+2019-09-13 15:04:09.563 +10:00 [Information] FindAsync Info: Id: 5ce714913b0ceb4130085c07
+2019-09-13 15:04:09.564 +10:00 [Information] FindAsync Info: Id: 5ce94df6845ec048c4f12141
+2019-09-13 15:04:09.564 +10:00 [Information] FindAsync Info: Id: 5ceb3d775e32c6a2bc2ff2da
+2019-09-13 15:04:09.565 +10:00 [Information] FindAsync Info: Id: 5ceb85a9539adc2b8827a1c8
+2019-09-13 15:04:09.566 +10:00 [Information] FindAsync Info: Id: 5cec593fe4bb5a2ccc54931a
+2019-09-13 15:04:09.568 +10:00 [Information] FindAsync Info: Id: 5cedb63fe884095cc8cfb969
+2019-09-13 15:04:09.568 +10:00 [Information] FindAsync Info: Id: 5cee313000f3470d48b1abf5
+2019-09-13 15:04:09.569 +10:00 [Information] FindAsync Info: Id: 5cef0c50aab31f5ae832e110
+2019-09-13 15:04:09.570 +10:00 [Information] FindAsync Info: Id: 5cf5e42be0d7741fd4aac243
+2019-09-13 15:04:09.570 +10:00 [Information] FindAsync Info: Id: 5cf73831fa1cff0ed8c747a5
+2019-09-13 15:04:09.571 +10:00 [Information] FindAsync Info: Id: 5cf775435a12ac26e0b6db91
+2019-09-13 15:04:09.572 +10:00 [Information] FindAsync Info: Id: 5cfefa0123b59f06c0d76020
+2019-09-13 15:04:09.574 +10:00 [Information] FindAsync Info: Id: 5d0784fa024e322a08c6dfb0
+2019-09-13 15:04:09.575 +10:00 [Information] FindAsync Info: Id: 5d098726b11c9613643ff45b
+2019-09-13 15:04:09.577 +10:00 [Information] FindAsync Info: Id: 5d0b3f5f12a3453ae871ea41
+2019-09-13 15:04:09.577 +10:00 [Information] FindAsync Info: Id: 5d0bf9b539ef4b4580d113f3
+2019-09-13 15:04:09.578 +10:00 [Information] FindAsync Info: Id: 5d0f37411aebd7176c4e612e
+2019-09-13 15:04:09.579 +10:00 [Information] FindAsync Info: Id: 5d0f3e261aebd7176c4e612f
+2019-09-13 15:04:09.579 +10:00 [Information] FindAsync Info: Id: 5d0f503f1aebd7176c4e6130
+2019-09-13 15:04:09.580 +10:00 [Information] FindAsync Info: Id: 5d0f51871aebd7176c4e6131
+2019-09-13 15:04:09.580 +10:00 [Information] FindAsync Info: Id: 5d0f53161aebd7176c4e6132
+2019-09-13 15:04:09.581 +10:00 [Information] FindAsync Info: Id: 5d101fffdefe5f4a7ca288cf
+2019-09-13 15:04:09.581 +10:00 [Information] FindAsync Info: Id: 5d10248e1aebd7176c4e6133
+2019-09-13 15:04:09.582 +10:00 [Information] FindAsync Info: Id: 5d118bf1081f1029d8ecf67f
+2019-09-13 15:04:09.583 +10:00 [Information] FindAsync Info: Id: 5d18108f44124f389cbfd0f6
+2019-09-13 15:04:09.583 +10:00 [Information] FindAsync Info: Id: 5d195ba6cac3654eac0adb3a
+2019-09-13 15:04:09.584 +10:00 [Information] FindAsync Info: Id: 5d1b03b6f4e24742a06785f3
+2019-09-13 15:04:09.584 +10:00 [Information] FindAsync Info: Id: 5d1beddb4a3b7f2a380d419b
+2019-09-13 15:04:09.585 +10:00 [Information] FindAsync Info: Id: 5d1d75ee21563010747e2fd5
+2019-09-13 15:04:09.585 +10:00 [Information] FindAsync Info: Id: 5d209e5d3384bc4038d28c54
+2019-09-13 15:04:09.586 +10:00 [Information] FindAsync Info: Id: 5d229ca7d4a1b422bc8d2e15
+2019-09-13 15:04:09.586 +10:00 [Information] FindAsync Info: Id: 5d22be1686f75500064a865c
+2019-09-13 15:04:09.587 +10:00 [Information] FindAsync Info: Id: 5d28147fcce8020ef80057a1
+2019-09-13 15:04:09.589 +10:00 [Error] FindAsync Error: An error occurred while deserializing the JobSeekingStatus property of class Talent.Common.Models.User: Expected a nested document representing the serialized form of a Talent.Common.Models.JobSeekingStatus value, but found a value of type String instead.
+2019-09-13 15:04:09.590 +10:00 [Information] FindAsync Info: Id: 5d2ced935d00e623c8bbf9e1
+2019-09-13 15:04:09.591 +10:00 [Information] FindAsync Info: Id: 5d2d5c29025c623ddc5ffb7e
+2019-09-13 15:04:09.592 +10:00 [Information] FindAsync Info: Id: 5d2e5ea469dc22191c7b2858
+2019-09-13 15:04:09.592 +10:00 [Information] FindAsync Info: Id: 5d2e7201615bb033a812599d
+2019-09-13 15:04:09.593 +10:00 [Information] FindAsync Info: Id: 5d2f24eaac78ea602ce38cbc
+2019-09-13 15:04:09.595 +10:00 [Information] FindAsync Info: Id: 5d3fabdb31970298f89a5061
+2019-09-13 15:04:09.595 +10:00 [Information] FindAsync Info: Id: 5d3fc4117b8e129384fbc3b3
+2019-09-13 15:04:09.596 +10:00 [Information] FindAsync Info: Id: 5d48fd3ca2c58564106fbc13
+2019-09-13 15:04:09.597 +10:00 [Information] FindAsync Info: Id: 5d5a05da56e60a5b04be20ec
+2019-09-13 15:04:09.598 +10:00 [Information] FindAsync Info: Id: 5d5a06db56e60a5b04be20ed
+2019-09-13 15:04:09.601 +10:00 [Information] FindAsync Info: Id: 5d6333b9005b97443095fabe
+2019-09-13 15:04:09.602 +10:00 [Information] FindAsync Info: Id: 5d6333f8005b97443095fabf
+2019-09-13 15:04:09.602 +10:00 [Information] FindAsync Info: Id: 5d633889dc377fb14482a58e
+2019-09-13 15:04:09.603 +10:00 [Information] FindAsync Info: Id: 5d6338b9dc377fb14482a58f
+2019-09-13 15:04:09.605 +10:00 [Information] FindAsync Info: Id: 5d64d5d8e0c3c5251c0de25f
+2019-09-13 15:04:09.605 +10:00 [Information] FindAsync Info: Id: 5d64daa8e468813128d1d0e7
+2019-09-13 15:04:09.606 +10:00 [Information] FindAsync Info: Id: 5d65eaffda4d8e281044de4c
+2019-09-13 15:04:09.607 +10:00 [Information] FindAsync Info: Id: 5d671f368c68ff3074de5054
+2019-09-13 15:04:09.608 +10:00 [Information] FindAsync Info: Id: 5d6cf1b0579525447c5af3f3
+2019-09-13 15:04:09.609 +10:00 [Information] FindAsync Info: Id: 5d6ed6554482fc2e78961336
+2019-09-13 15:04:09.610 +10:00 [Information] FindAsync Info: Id: 5d70c9766ae77b3eb831fbe1
+2019-09-13 15:04:09.611 +10:00 [Information] FindAsync Info: Id: 5d724be2a2adec480c269264
+2019-09-13 15:04:09.611 +10:00 [Information] FindAsync Info: Id: 5d732a092c0e1b263441690f
+2019-09-13 15:04:09.612 +10:00 [Information] FindAsync Info: Id: 5d74a9176518c432e897b808
+2019-09-13 15:04:09.613 +10:00 [Information] FindAsync Info: Id: 5d761d921da39521c0f7073f
+2019-09-13 15:04:09.613 +10:00 [Information] FindAsync Info: Id: 5d77026e4f287322809cc5a0
+2019-09-13 15:04:09.614 +10:00 [Information] FindAsync Info: Id: 5d773cf5b36d9821e85bafc9
+2019-09-13 15:04:09.615 +10:00 [Information] FindAsync Info: Id: 5d7ab1fe9fc36740509bd5c7
+2019-09-13 15:04:09.622 +10:00 [Information] result count is 5
+2019-09-13 15:04:09.622 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 15:04:09.623 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 442.0081ms
+2019-09-13 15:04:09.623 +10:00 [Information] Request finished in 455.8252ms 200 application/json; charset=utf-8
+2019-09-13 15:04:30.376 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=0&number=5  
+2019-09-13 15:04:30.376 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-13 15:04:30.376 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 15:04:30.376 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/isUserAuthenticated  
+2019-09-13 15:04:30.465 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:30.465 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:30.465 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:30.465 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:30.513 +10:00 [Information] Request finished in 184.1533ms 204 
+2019-09-13 15:04:30.514 +10:00 [Information] Request finished in 183.7495ms 204 
+2019-09-13 15:04:30.514 +10:00 [Information] Request finished in 184.165ms 204 
+2019-09-13 15:04:30.515 +10:00 [Information] Request finished in 184.161ms 204 
+2019-09-13 15:04:30.532 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 15:04:30.532 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/isUserAuthenticated application/json 
+2019-09-13 15:04:30.533 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=0&number=5  
+2019-09-13 15:04:30.535 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:30.535 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:30.535 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:30.690 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getEmployerProfile  
+2019-09-13 15:04:30.691 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:31.114 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:31.114 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:31.114 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:31.114 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:31.122 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:31.122 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:31.122 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:31.122 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:31.140 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:31.140 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:31.140 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:31.140 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:31.767 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 15:04:31.767 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" with arguments (null) - ModelState is Valid
+2019-09-13 15:04:31.791 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" with arguments (["", ""]) - ModelState is Valid
+2019-09-13 15:04:31.858 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 15:04:32.496 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 15:04:32.496 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, employer = Talent.Services.Profile.Models.Profile.EmployerProfileViewModel }".
+2019-09-13 15:04:32.496 +10:00 [Information] Executing JsonResult, writing value "{ IsAuthenticated = True, Username = MVP, Type = employer }".
+2019-09-13 15:04:32.582 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 1690.1816ms
+2019-09-13 15:04:32.582 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetEmployerProfile (Talent.Services.Profile)" in 1689.516ms
+2019-09-13 15:04:32.583 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.IsUserAuthenticated (Talent.Services.Profile)" in 1689.6517ms
+2019-09-13 15:04:32.586 +10:00 [Information] Request finished in 2054.3912ms 200 application/json; charset=utf-8
+2019-09-13 15:04:32.586 +10:00 [Information] Request finished in 2054.5479ms 200 application/json; charset=utf-8
+2019-09-13 15:04:32.586 +10:00 [Information] Request finished in 1895.6318ms 200 application/json; charset=utf-8
+2019-09-13 15:04:32.648 +10:00 [Information] FindAsync Info: Id: 5c6cb5a98c85090c88fb0bc8
+2019-09-13 15:04:32.685 +10:00 [Information] FindAsync Info: Id: 5cb1d1f1cc904761d0ebd0dd
+2019-09-13 15:04:32.933 +10:00 [Information] FindAsync Info: Id: 5d0b3f5f12a3453ae871ea41
+2019-09-13 15:04:32.945 +10:00 [Error] FindAsync Error: An error occurred while deserializing the JobSeekingStatus property of class Talent.Common.Models.User: Expected a nested document representing the serialized form of a Talent.Common.Models.JobSeekingStatus value, but found a value of type String instead.
+2019-09-13 15:04:32.965 +10:00 [Information] result count is 2
+2019-09-13 15:04:32.976 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 15:04:32.993 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 2087.4007ms
+2019-09-13 15:04:33.002 +10:00 [Information] Request finished in 2468.1636ms 200 application/json; charset=utf-8
+2019-09-13 15:04:37.333 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=1&number=5  
+2019-09-13 15:04:37.334 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:37.334 +10:00 [Information] Request finished in 1.3336ms 204 
+2019-09-13 15:04:37.343 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=1&number=5  
+2019-09-13 15:04:37.344 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:37.351 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:37.352 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:37.352 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:37.355 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 15:04:37.510 +10:00 [Information] FindAsync Info: Id: 5c6cb5a98c85090c88fb0bc8
+2019-09-13 15:04:37.523 +10:00 [Information] FindAsync Info: Id: 5cb1d1f1cc904761d0ebd0dd
+2019-09-13 15:04:37.667 +10:00 [Information] FindAsync Info: Id: 5d0b3f5f12a3453ae871ea41
+2019-09-13 15:04:37.671 +10:00 [Error] FindAsync Error: An error occurred while deserializing the JobSeekingStatus property of class Talent.Common.Models.User: Expected a nested document representing the serialized form of a Talent.Common.Models.JobSeekingStatus value, but found a value of type String instead.
+2019-09-13 15:04:37.682 +10:00 [Information] result count is 0
+2019-09-13 15:04:37.682 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 15:04:37.683 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 331.4201ms
+2019-09-13 15:04:37.683 +10:00 [Information] Request finished in 339.4832ms 200 application/json; charset=utf-8
+2019-09-13 15:04:40.670 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=2&number=5  
+2019-09-13 15:04:40.670 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:40.670 +10:00 [Information] Request finished in 0.4463ms 204 
+2019-09-13 15:04:40.682 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=2&number=5  
+2019-09-13 15:04:40.683 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:40.687 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:40.687 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:40.687 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:40.687 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 15:04:40.828 +10:00 [Information] FindAsync Info: Id: 5c6cb5a98c85090c88fb0bc8
+2019-09-13 15:04:40.841 +10:00 [Information] FindAsync Info: Id: 5cb1d1f1cc904761d0ebd0dd
+2019-09-13 15:04:41.024 +10:00 [Information] FindAsync Info: Id: 5d0b3f5f12a3453ae871ea41
+2019-09-13 15:04:41.029 +10:00 [Error] FindAsync Error: An error occurred while deserializing the JobSeekingStatus property of class Talent.Common.Models.User: Expected a nested document representing the serialized form of a Talent.Common.Models.JobSeekingStatus value, but found a value of type String instead.
+2019-09-13 15:04:41.039 +10:00 [Information] result count is 0
+2019-09-13 15:04:41.039 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 15:04:41.039 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 353.187ms
+2019-09-13 15:04:41.040 +10:00 [Information] Request finished in 359.4253ms 200 application/json; charset=utf-8
+2019-09-13 15:04:42.084 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=3&number=5  
+2019-09-13 15:04:42.084 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:42.084 +10:00 [Information] Request finished in 1.6935ms 204 
+2019-09-13 15:04:42.094 +10:00 [Information] Request starting HTTP/1.1 GET http://localhost:60290/profile/profile/getTalent?position=3&number=5  
+2019-09-13 15:04:42.094 +10:00 [Information] Policy execution successful.
+2019-09-13 15:04:42.095 +10:00 [Information] Successfully validated the token.
+2019-09-13 15:04:42.095 +10:00 [Information] AuthenticationScheme: "Bearer" was successfully authenticated.
+2019-09-13 15:04:42.095 +10:00 [Information] Authorization was successful for user: "5d4c9d83b058de756cf437e3".
+2019-09-13 15:04:42.095 +10:00 [Information] Executing action method "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" with arguments (["Talent.Common.Models.FeedIncrementModel"]) - ModelState is Valid
+2019-09-13 15:04:42.235 +10:00 [Information] FindAsync Info: Id: 5c6cb5a98c85090c88fb0bc8
+2019-09-13 15:04:42.249 +10:00 [Information] FindAsync Info: Id: 5cb1d1f1cc904761d0ebd0dd
+2019-09-13 15:04:42.400 +10:00 [Information] FindAsync Info: Id: 5d0b3f5f12a3453ae871ea41
+2019-09-13 15:04:42.404 +10:00 [Error] FindAsync Error: An error occurred while deserializing the JobSeekingStatus property of class Talent.Common.Models.User: Expected a nested document representing the serialized form of a Talent.Common.Models.JobSeekingStatus value, but found a value of type String instead.
+2019-09-13 15:04:42.415 +10:00 [Information] result count is 0
+2019-09-13 15:04:42.415 +10:00 [Information] Executing JsonResult, writing value "{ Success = True, Data = System.Collections.Generic.List`1[Talent.Services.Profile.Models.TalentSnapshotViewModel], Feed = Talent.Common.Models.FeedIncrementModel }".
+2019-09-13 15:04:42.415 +10:00 [Information] Executed action "Talent.Services.Profile.Controllers.ProfileController.GetTalentSnapshots (Talent.Services.Profile)" in 320.8935ms
+2019-09-13 15:04:42.415 +10:00 [Information] Request finished in 321.4181ms 200 application/json; charset=utf-8
+2019-09-13 15:07:55.614 +10:00 [Information] Request starting HTTP/1.1 OPTIONS http://localhost:60290/profile/profile/getTalent?position=4&number=5  
+2019-09-13 15:07:55.728 +10:00 [Information] Policy execution successful.
+2019-09-13 15:07:55.811 +10:00 [Information] Request finished in 238.1802ms 204 
